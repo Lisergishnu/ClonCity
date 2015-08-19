@@ -11,6 +11,8 @@
 		FF96B6681B8432320055BF44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6671B8432320055BF44 /* Images.xcassets */; };
 		FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6691B8432320055BF44 /* MainMenu.xib */; };
 		FF96B6771B8432320055BF44 /* ClonCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B6761B8432320055BF44 /* ClonCityTests.swift */; };
+		FF96B6811B8435FB0055BF44 /* SplashWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6801B8435FB0055BF44 /* SplashWindow.xib */; };
+		FF96B6851B843A0D0055BF44 /* SelectMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6841B843A0D0055BF44 /* SelectMapView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		FF96B6701B8432320055BF44 /* ClonCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClonCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96B6751B8432320055BF44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF96B6761B8432320055BF44 /* ClonCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClonCityTests.swift; sourceTree = "<group>"; };
+		FF96B6801B8435FB0055BF44 /* SplashWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashWindow.xib; sourceTree = "<group>"; };
+		FF96B6841B843A0D0055BF44 /* SelectMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectMapView.xib; path = ClonCity.xcodeproj/../SelectMapView.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +77,11 @@
 		FF96B6621B8432320055BF44 /* ClonCity */ = {
 			isa = PBXGroup;
 			children = (
+				FF96B6841B843A0D0055BF44 /* SelectMapView.xib */,
 				FF96B6651B8432320055BF44 /* AppDelegate.swift */,
 				FF96B6671B8432320055BF44 /* Images.xcassets */,
 				FF96B6691B8432320055BF44 /* MainMenu.xib */,
+				FF96B6801B8435FB0055BF44 /* SplashWindow.xib */,
 				FF96B6631B8432320055BF44 /* Supporting Files */,
 			);
 			path = ClonCity;
@@ -187,7 +193,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF96B6681B8432320055BF44 /* Images.xcassets in Resources */,
+				FF96B6811B8435FB0055BF44 /* SplashWindow.xib in Resources */,
 				FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */,
+				FF96B6851B843A0D0055BF44 /* SelectMapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
