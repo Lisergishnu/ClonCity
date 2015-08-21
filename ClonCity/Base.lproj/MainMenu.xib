@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="mainGameViewController" destination="w0v-1A-wVW" id="I0L-d4-PGz"/>
+                <outlet property="newMapMenuItem" destination="t4Z-72-zeI" id="XEw-Hy-hKB"/>
                 <outlet property="splashWindow" destination="fkd-td-6O7" id="8rY-rN-TzC"/>
                 <outlet property="terraformWindowMenuItem" destination="bIL-Im-9L5" id="GnS-36-6YV"/>
                 <outlet property="windowMenu" destination="aUF-d1-5bR" id="OJA-R3-jF7"/>
