@@ -11,11 +11,12 @@
 		FF96B6681B8432320055BF44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6671B8432320055BF44 /* Images.xcassets */; };
 		FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6691B8432320055BF44 /* MainMenu.xib */; };
 		FF96B6771B8432320055BF44 /* ClonCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B6761B8432320055BF44 /* ClonCityTests.swift */; };
-		FF96B6811B8435FB0055BF44 /* SplashWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6801B8435FB0055BF44 /* SplashWindow.xib */; };
-		FF96B6851B843A0D0055BF44 /* SelectMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6841B843A0D0055BF44 /* SelectMapView.xib */; };
 		FF96B68B1B856AA60055BF44 /* CCMainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B68A1B856AA60055BF44 /* CCMainGameViewController.swift */; };
 		FF96B68D1B856B2D0055BF44 /* CCMainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */; };
 		FF96B68F1B856BAD0055BF44 /* CCMinimapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */; };
+		FFECABD41B86349B005D51EF /* CCCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD31B86349B005D51EF /* CCCityModel.swift */; };
+		FFECABD61B866BA2005D51EF /* CCMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD51B866BA2005D51EF /* CCMapModel.swift */; };
+		FFECABDA1B86743B005D51EF /* CCMainGameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +38,12 @@
 		FF96B6701B8432320055BF44 /* ClonCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClonCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96B6751B8432320055BF44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF96B6761B8432320055BF44 /* ClonCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClonCityTests.swift; sourceTree = "<group>"; };
-		FF96B6801B8435FB0055BF44 /* SplashWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashWindow.xib; sourceTree = "<group>"; };
-		FF96B6841B843A0D0055BF44 /* SelectMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectMapView.xib; path = ClonCity.xcodeproj/../SelectMapView.xib; sourceTree = SOURCE_ROOT; };
 		FF96B68A1B856AA60055BF44 /* CCMainGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainGameViewController.swift; sourceTree = "<group>"; };
 		FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainGameView.swift; sourceTree = "<group>"; };
 		FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMinimapGameView.swift; sourceTree = "<group>"; };
+		FFECABD31B86349B005D51EF /* CCCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCityModel.swift; sourceTree = "<group>"; };
+		FFECABD51B866BA2005D51EF /* CCMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapModel.swift; sourceTree = "<group>"; };
+		FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainGameWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +85,16 @@
 		FF96B6621B8432320055BF44 /* ClonCity */ = {
 			isa = PBXGroup;
 			children = (
+				FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */,
 				FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */,
 				FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */,
-				FF96B6841B843A0D0055BF44 /* SelectMapView.xib */,
 				FF96B6651B8432320055BF44 /* AppDelegate.swift */,
 				FF96B6671B8432320055BF44 /* Images.xcassets */,
 				FF96B6691B8432320055BF44 /* MainMenu.xib */,
 				FF96B68A1B856AA60055BF44 /* CCMainGameViewController.swift */,
-				FF96B6801B8435FB0055BF44 /* SplashWindow.xib */,
 				FF96B6631B8432320055BF44 /* Supporting Files */,
+				FFECABD31B86349B005D51EF /* CCCityModel.swift */,
+				FFECABD51B866BA2005D51EF /* CCMapModel.swift */,
 			);
 			path = ClonCity;
 			sourceTree = "<group>";
@@ -202,9 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF96B6681B8432320055BF44 /* Images.xcassets in Resources */,
-				FF96B6811B8435FB0055BF44 /* SplashWindow.xib in Resources */,
 				FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */,
-				FF96B6851B843A0D0055BF44 /* SelectMapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +225,10 @@
 			files = (
 				FF96B68F1B856BAD0055BF44 /* CCMinimapGameView.swift in Sources */,
 				FF96B6661B8432320055BF44 /* AppDelegate.swift in Sources */,
+				FFECABD61B866BA2005D51EF /* CCMapModel.swift in Sources */,
+				FFECABD41B86349B005D51EF /* CCCityModel.swift in Sources */,
 				FF96B68D1B856B2D0055BF44 /* CCMainGameView.swift in Sources */,
+				FFECABDA1B86743B005D51EF /* CCMainGameWindowController.swift in Sources */,
 				FF96B68B1B856AA60055BF44 /* CCMainGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +420,7 @@
 				FF96B67C1B8432320055BF44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF96B67D1B8432320055BF44 /* Build configuration list for PBXNativeTarget "ClonCityTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +429,7 @@
 				FF96B67F1B8432320055BF44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

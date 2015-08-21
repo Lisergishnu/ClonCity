@@ -404,7 +404,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="MainGame" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="Main">
+        <window title="MainGame" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="220" y="237" width="537" height="509"/>
@@ -566,7 +566,7 @@
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="693.5" y="26.5"/>
+            <point key="canvasLocation" x="712.5" y="45.5"/>
         </window>
         <window title="Minimapa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="n0O-Fh-9x6" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
@@ -584,5 +584,168 @@
             </view>
             <point key="canvasLocation" x="806" y="368"/>
         </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="wyn-Zc-Mpe">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="877"/>
+            <view key="contentView" id="dVs-1H-1cZ">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsM-Jw-83F">
+                        <rect key="frame" x="14" y="13" width="122" height="32"/>
+                        <buttonCell key="cell" type="push" title="Nuevo Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jzi-yf-u3k">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VC4-lS-ivR">
+                        <rect key="frame" x="342" y="13" width="124" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cargar Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a6F-mu-yPB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQe-vE-jTF">
+                        <rect key="frame" x="184" y="13" width="113" height="32"/>
+                        <buttonCell key="cell" type="push" title="Crear Mapa" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="94s-37-Y2b">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JEo-6f-Evf">
+                        <rect key="frame" x="133" y="113" width="215" height="91"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="ClonCity" drawsBackground="YES" id="OBl-ge-y2q">
+                            <font key="font" size="50" name="Impact"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="292" y="750"/>
+        </window>
+        <customView id="IIu-z5-MXJ">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="260"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d1R-BX-0bY">
+                    <rect key="frame" x="18" y="223" width="137" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre de la ciudad:" id="CA4-ST-g1l">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bg2-td-g5D">
+                    <rect key="frame" x="18" y="168" width="128" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre del alcalde:" id="f1S-Pr-KeM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q98-pi-YCa">
+                    <rect key="frame" x="20" y="138" width="196" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bgX-SE-HGJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DaV-OG-kng">
+                    <rect key="frame" x="20" y="20" width="155" height="85"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="S9p-XJ-0I0"/>
+                        <constraint firstAttribute="width" constant="155" id="rOT-PK-jnB"/>
+                    </constraints>
+                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    <size key="cellSize" width="61" height="18"/>
+                    <size key="intercellSpacing" width="4" height="2"/>
+                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="lvX-e2-kUu">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <cells>
+                        <column>
+                            <buttonCell type="radio" title="Facil" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="G8k-OC-djW">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <buttonCell type="radio" title="Medio" imagePosition="left" alignment="left" inset="2" id="blZ-U1-vwq">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <buttonCell type="radio" title="Dificil" imagePosition="left" alignment="left" inset="2" id="gtj-GX-Da9">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </column>
+                    </cells>
+                </matrix>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-Pw-Ajg">
+                    <rect key="frame" x="18" y="113" width="66" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dificultad:" id="obz-Cc-MDg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lxq-c9-o0l">
+                    <rect key="frame" x="352" y="212" width="114" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="102" id="u3v-Vz-tEy"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Crear Ciudad" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="wuk-XT-3af">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9nr-z3-9NG">
+                    <rect key="frame" x="371" y="13" width="95" height="32"/>
+                    <buttonCell key="cell" type="push" title="Cancelar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hDa-GD-BKu">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m00-04-Zat">
+                    <rect key="frame" x="20" y="193" width="196" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="196" id="dcX-ny-WWY"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7QU-Uo-KjC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="d1R-BX-0bY" firstAttribute="leading" secondItem="IIu-z5-MXJ" secondAttribute="leading" constant="20" id="0US-SO-12t"/>
+                <constraint firstItem="DaV-OG-kng" firstAttribute="top" secondItem="hqZ-Pw-Ajg" secondAttribute="bottom" constant="8" symbolic="YES" id="1oZ-AD-CaH"/>
+                <constraint firstItem="m00-04-Zat" firstAttribute="top" secondItem="d1R-BX-0bY" secondAttribute="bottom" constant="8" symbolic="YES" id="BOG-fC-KV9"/>
+                <constraint firstItem="Q98-pi-YCa" firstAttribute="top" secondItem="bg2-td-g5D" secondAttribute="bottom" constant="8" symbolic="YES" id="Cyr-DW-0X3"/>
+                <constraint firstItem="Lxq-c9-o0l" firstAttribute="top" secondItem="d1R-BX-0bY" secondAttribute="top" id="M9S-Pv-tBu"/>
+                <constraint firstItem="m00-04-Zat" firstAttribute="trailing" secondItem="Q98-pi-YCa" secondAttribute="trailing" id="N5Z-MO-PeG"/>
+                <constraint firstItem="m00-04-Zat" firstAttribute="leading" secondItem="d1R-BX-0bY" secondAttribute="leading" id="Nke-Vn-Hzh"/>
+                <constraint firstItem="DaV-OG-kng" firstAttribute="bottom" secondItem="9nr-z3-9NG" secondAttribute="bottom" id="PcG-cW-6J3"/>
+                <constraint firstItem="9nr-z3-9NG" firstAttribute="trailing" secondItem="Lxq-c9-o0l" secondAttribute="trailing" id="SDL-xA-ik4"/>
+                <constraint firstItem="hqZ-Pw-Ajg" firstAttribute="top" secondItem="Q98-pi-YCa" secondAttribute="bottom" constant="8" symbolic="YES" id="cvk-dG-YhH"/>
+                <constraint firstItem="hqZ-Pw-Ajg" firstAttribute="leading" secondItem="DaV-OG-kng" secondAttribute="leading" id="fFc-nW-RsS"/>
+                <constraint firstItem="bg2-td-g5D" firstAttribute="leading" secondItem="m00-04-Zat" secondAttribute="leading" id="hK6-Wl-xuC"/>
+                <constraint firstAttribute="trailing" secondItem="Lxq-c9-o0l" secondAttribute="trailing" constant="20" symbolic="YES" id="iwa-g8-tlt"/>
+                <constraint firstItem="bg2-td-g5D" firstAttribute="top" secondItem="m00-04-Zat" secondAttribute="bottom" constant="8" symbolic="YES" id="ju3-7s-i2q"/>
+                <constraint firstItem="bg2-td-g5D" firstAttribute="leading" secondItem="Q98-pi-YCa" secondAttribute="leading" id="kJV-Xy-otg"/>
+                <constraint firstItem="Q98-pi-YCa" firstAttribute="leading" secondItem="hqZ-Pw-Ajg" secondAttribute="leading" id="pQT-HW-Poh"/>
+                <constraint firstItem="d1R-BX-0bY" firstAttribute="top" secondItem="IIu-z5-MXJ" secondAttribute="top" constant="20" id="uuC-BJ-fpV"/>
+            </constraints>
+            <point key="canvasLocation" x="861" y="745"/>
+        </customView>
+        <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="dpQ-Pa-xhE" id="uie-4h-KEG"/>
+            </connections>
+        </viewController>
     </objects>
 </document>
