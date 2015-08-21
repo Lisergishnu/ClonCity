@@ -13,14 +13,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var splashWindow: NSWindow!
     @IBOutlet weak var mainGameViewController: CCMainGameViewController!
+    @IBOutlet weak var windowMenu: NSMenuItem!
+    @IBOutlet weak var terraformWindowMenuItem: NSMenuItem!
     
-    @IBAction func createMapButtonDidGetPressed(sender: NSButton) {
+    @IBAction func createMapMenuDidGetPressed(sender: NSMenuItem) {
+        sender.hidden = true
+        createMapButtonDidGetPressed(sender)
+    }
+    
+    @IBAction func createMapButtonDidGetPressed(sender: AnyObject?) {
         splashWindow.orderOut(sender)
         mainGameViewController.prepareInterfaceForMapEditing()
+        windowMenu.hidden = false
+        terraformWindowMenuItem.hidden = false
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         splashWindow.makeKeyAndOrderFront(nil)
+        windowMenu.hidden = true
+        terraformWindowMenuItem.hidden = true
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

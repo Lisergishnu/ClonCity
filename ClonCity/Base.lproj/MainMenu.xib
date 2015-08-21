@@ -15,6 +15,8 @@
             <connections>
                 <outlet property="mainGameViewController" destination="w0v-1A-wVW" id="I0L-d4-PGz"/>
                 <outlet property="splashWindow" destination="fkd-td-6O7" id="8rY-rN-TzC"/>
+                <outlet property="terraformWindowMenuItem" destination="bIL-Im-9L5" id="GnS-36-6YV"/>
+                <outlet property="windowMenu" destination="aUF-d1-5bR" id="OJA-R3-jF7"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -64,13 +66,19 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="File" id="dMs-cI-mzQ">
+                <menuItem title="Archivo" id="dMs-cI-mzQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="File" id="bib-Uj-vzu">
+                    <menu key="submenu" title="Archivo" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                            <menuItem title="Nuevo Juego" keyEquivalent="n" id="Was-JA-tGl">
                                 <connections>
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="createMapMenuDidGetPressed:" target="Voe-Tx-rLC" id="pZc-zC-5yO"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -366,9 +374,9 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Window" id="aUF-d1-5bR">
+                <menuItem title="Ventana" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                    <menu key="submenu" title="Ventana" systemMenu="window" id="Td7-aD-5lo">
                         <items>
                             <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                 <connections>
@@ -388,6 +396,20 @@
                                     <action selector="arrangeInFront:" target="-1" id="DRN-fu-gQh"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="cm3-f6-0Bs"/>
+                            <menuItem title="Herramientas" id="RA2-zt-B93">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFront:" target="aQJ-Fg-nat" id="aOd-Me-Lby"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Terraformación" id="bIL-Im-9L5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFront:" target="VbS-cM-Nhz" id="Ytb-GP-r0l"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="BFH-bP-AK1"/>
                         </items>
                     </menu>
                 </menuItem>
@@ -739,7 +761,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="createMapButtonDidGetPressed:" target="Voe-Tx-rLC" id="1ou-KD-cDN"/>
+                            <action selector="createMapButtonDidGetPressed:" target="Voe-Tx-rLC" id="Paf-3f-UWu"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9b-q4-ykf">
