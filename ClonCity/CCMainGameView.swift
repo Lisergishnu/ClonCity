@@ -18,7 +18,6 @@ class CCMainGameView: NSView {
         let path = NSBezierPath(rect: self.bounds)
         
         path.fill()
-        NSLog("Calling drawRect...\n")
     }
     
 }

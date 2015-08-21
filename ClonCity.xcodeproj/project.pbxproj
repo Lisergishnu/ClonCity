@@ -17,6 +17,7 @@
 		FFECABD41B86349B005D51EF /* CCCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD31B86349B005D51EF /* CCCityModel.swift */; };
 		FFECABD61B866BA2005D51EF /* CCMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD51B866BA2005D51EF /* CCMapModel.swift */; };
 		FFECABDA1B86743B005D51EF /* CCMainGameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */; };
+		FFECABE01B87BCEF005D51EF /* CCSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		FFECABD31B86349B005D51EF /* CCCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCityModel.swift; sourceTree = "<group>"; };
 		FFECABD51B866BA2005D51EF /* CCMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapModel.swift; sourceTree = "<group>"; };
 		FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMainGameWindowController.swift; sourceTree = "<group>"; };
+		FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		FF96B6621B8432320055BF44 /* ClonCity */ = {
 			isa = PBXGroup;
 			children = (
+				FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */,
 				FFECABD91B86743B005D51EF /* CCMainGameWindowController.swift */,
 				FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */,
 				FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */,
@@ -92,9 +95,9 @@
 				FF96B6671B8432320055BF44 /* Images.xcassets */,
 				FF96B6691B8432320055BF44 /* MainMenu.xib */,
 				FF96B68A1B856AA60055BF44 /* CCMainGameViewController.swift */,
-				FF96B6631B8432320055BF44 /* Supporting Files */,
 				FFECABD31B86349B005D51EF /* CCCityModel.swift */,
 				FFECABD51B866BA2005D51EF /* CCMapModel.swift */,
+				FF96B6631B8432320055BF44 /* Supporting Files */,
 			);
 			path = ClonCity;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				FF96B68D1B856B2D0055BF44 /* CCMainGameView.swift in Sources */,
 				FFECABDA1B86743B005D51EF /* CCMainGameWindowController.swift in Sources */,
 				FF96B68B1B856AA60055BF44 /* CCMainGameViewController.swift in Sources */,
+				FFECABE01B87BCEF005D51EF /* CCSplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

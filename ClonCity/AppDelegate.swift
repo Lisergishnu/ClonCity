@@ -11,11 +11,16 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
-
+    @IBOutlet weak var splashWindow: NSWindow!
+    @IBOutlet weak var mainGameViewController: CCMainGameViewController!
+    
+    @IBAction func createMapButtonDidGetPressed(sender: NSButton) {
+        splashWindow.orderOut(sender)
+        mainGameViewController.prepareInterfaceForMapEditing()
+    }
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        splashWindow.makeKeyAndOrderFront(nil)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
