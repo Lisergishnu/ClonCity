@@ -25,6 +25,8 @@ class CCMainGameViewController: NSViewController {
         terraformingPanel.orderFrontRegardless()
         minimap.orderFrontRegardless()
         mainWindow.makeKeyAndOrderFront(nil)
+        mainWindow.title = "Nuevo Mapa"
+        mainWindow.makeMainWindow()
         
     }
     
