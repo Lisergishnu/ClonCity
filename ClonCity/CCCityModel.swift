@@ -25,6 +25,10 @@ class CCCityModel {
     
     var map : CCMapModel?
     
+    init(initMoney: Int, initYear: Int, map: CCMapModel, cityName: String?, mayorName: String?) {
+        initializeCity(initMoney, initYear: initYear, map: map, cityName: cityName, mayorName: mayorName)
+    }
+    
     func initializeCity(initMoney: Int,
         initYear: Int, map: CCMapModel,
         cityName: String?, mayorName: String?) {

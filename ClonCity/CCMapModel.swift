@@ -17,10 +17,15 @@ class CCMapModel {
         case CCTERRAIN_TREE
     }
     
-    var terrain : [[CCTerrainType]]?;
+    var terrain : [[CCTerrainType]]?
+    var width : Int = 0
+    var height : Int = 0
+    
     
     func createEmptyModel(width: Int, height: Int, defaultTerrain:CCTerrainType) {
         terrain = Array(count:width,
             repeatedValue:Array(count:height, repeatedValue:defaultTerrain))
+        self.width = width
+        self.height = height
     }
 }

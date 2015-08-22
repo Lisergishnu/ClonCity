@@ -15,6 +15,9 @@ class CCMainGameViewController: NSViewController {
     @IBOutlet weak var terraformingPanel: NSPanel!
     @IBOutlet weak var minimap: NSPanel!
     
+    var isEditingMap : Bool = false
+    var mapUnderEdit : CCMapModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Created game view")
@@ -28,6 +31,12 @@ class CCMainGameViewController: NSViewController {
         mainWindow.title = "Nuevo Mapa"
         mainWindow.makeMainWindow()
         
+        isEditingMap = true
+        mapUnderEdit = CCMapModel()
+        mapUnderEdit!.createEmptyModel(10, height: 10, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
+        let mapview = view as! CCMainGameView
+        mapview.updateCurrentMap(mapUnderEdit!)
+        mapview.needsDisplay = true
     }
-    
+
 }
