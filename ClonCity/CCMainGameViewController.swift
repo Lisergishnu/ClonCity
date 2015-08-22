@@ -14,6 +14,7 @@ class CCMainGameViewController: NSViewController {
     @IBOutlet weak var mainWindow: NSWindow!
     @IBOutlet weak var terraformingPanel: NSPanel!
     @IBOutlet weak var minimap: NSPanel!
+    @IBOutlet weak var mainScrollView: NSScrollView!
     
     var isEditingMap : Bool = false
     var mapUnderEdit : CCMapModel?
@@ -37,6 +38,8 @@ class CCMainGameViewController: NSViewController {
         let mapview = view as! CCMainGameView
         mapview.updateCurrentMap(mapUnderEdit!)
         mapview.needsDisplay = true
+        let clipview = mainScrollView.contentView
+        clipview.translatesAutoresizingMaskIntoConstraints = false
+        
     }
-
 }

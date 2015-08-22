@@ -18,7 +18,7 @@ class CCMainGameView: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-        
+        NSLog("Redrawing game view")
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
                 var type = currentMap!.terrain![i][j]
@@ -31,7 +31,6 @@ class CCMainGameView: NSView {
                 path.fill()
             }
         }
-        
     }
     
 }
