@@ -34,12 +34,9 @@ class CCMainGameViewController: NSViewController {
         
         isEditingMap = true
         mapUnderEdit = CCMapModel()
-        mapUnderEdit!.createEmptyModel(10, height: 10, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
+        mapUnderEdit!.createEmptyModel(1000, height: 1000, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
         let mapview = view as! CCMainGameView
         mapview.updateCurrentMap(mapUnderEdit!)
         mapview.needsDisplay = true
-        let clipview = mainScrollView.contentView
-        clipview.translatesAutoresizingMaskIntoConstraints = false
-        
     }
 }

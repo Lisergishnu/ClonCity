@@ -22,10 +22,12 @@ class CCMainGameView: NSView {
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
                 var type = currentMap!.terrain![i][j]
-                switch type  {
-                default:
+                if i % 2 == 0 {
                     NSColor.blackColor().setFill()
+                } else {
+                    NSColor.greenColor().setFill()
                 }
+                
                 let path = NSBezierPath(rect:
                     NSRect(x: i*16, y: j*16, width: 16,height: 16))
                 path.fill()
