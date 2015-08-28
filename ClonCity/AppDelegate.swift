@@ -11,11 +11,32 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
-
+    @IBOutlet weak var splashWindow: NSWindow!
+    @IBOutlet weak var mainGameViewController: CCMainGameViewController!
+    @IBOutlet weak var windowMenu: NSMenuItem!
+    @IBOutlet weak var terraformWindowMenuItem: NSMenuItem!
+    @IBOutlet weak var newMapMenuItem: NSMenuItem!
+    
+    @IBAction func createMapMenuDidGetPressed(sender: NSMenuItem) {
+        createNewMap(sender)
+    }
+    
+    @IBAction func createMapButtonDidGetPressed(sender: AnyObject?) {
+        createNewMap(sender)
+    }
+    
+    func createNewMap(sender: AnyObject?) {
+        splashWindow.orderOut(sender)
+        mainGameViewController.prepareInterfaceForMapEditing()
+        windowMenu.hidden = false
+        terraformWindowMenuItem.hidden = false
+        newMapMenuItem.hidden = true
+    }
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        splashWindow.makeKeyAndOrderFront(nil)
+        windowMenu.hidden = true
+        terraformWindowMenuItem.hidden = true
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
