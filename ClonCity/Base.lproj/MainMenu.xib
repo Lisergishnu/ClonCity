@@ -465,10 +465,28 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="22" width="32" height="32"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </customView>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5t6-gb-yJg">
+                        <rect key="frame" x="0.0" y="21" width="537" height="489"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <clipView key="contentView" id="PnR-YP-L0a">
+                            <rect key="frame" x="1" y="1" width="520" height="472"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="537" height="487"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </customView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="E4V-OC-j5e">
+                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6s2-UR-DWT">
+                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>

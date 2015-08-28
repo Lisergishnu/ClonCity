@@ -15,15 +15,27 @@ class CCMainGameView: NSView {
     var layerContext : CGContext?
     var mapviewBounds : NSRect?
     var tileSize : Int = 32
+    var mapWidth : Int = 0
+    var mapHeight : Int = 0
+    
+    override var fittingSize : NSSize {
+        get {
+            return NSSize(width: mapWidth, height: mapHeight)
+        }
+    }
     
     func initializeBackgroundRenderingLayer(initialMap: CCMapModel) {
         currentMap = initialMap
+        /* Define dynamic boundaries for total layer size */
+        mapWidth = currentMap!.width*tileSize
+        mapHeight = currentMap!.height*tileSize
         mapviewBounds = NSRect(x: 0, y: 0,
-            width: currentMap!.width*tileSize, height: currentMap!.height*tileSize)
+            width: mapWidth, height: mapHeight)
+        self.setFrameSize(fittingSize)
         
         let context = NSGraphicsContext.currentContext()!.CGContext
         offscreenLayer = CGLayerCreateWithContext(context,
-            CGSize(width: mapviewBounds!.width,height: mapviewBounds!.height), nil)
+            CGSize(width: mapWidth,height: mapHeight), nil)
         layerContext = CGLayerGetContext(offscreenLayer)
         self.wantsLayer = true
         updateCurrentMap(initialMap)
