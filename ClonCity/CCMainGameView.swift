@@ -8,6 +8,17 @@
 
 import Cocoa
 
+extension NSImage {
+    var CGImage: CGImageRef {
+        get {
+            let imageData = self.TIFFRepresentation
+            let source = CGImageSourceCreateWithData(imageData as! CFDataRef, nil)
+            let maskRef = CGImageSourceCreateImageAtIndex(source, Int(0), nil)
+            return maskRef;
+        }
+    }
+}
+
 class CCMainGameView: NSView {
     
     var currentMap : CCMapModel?
@@ -17,6 +28,10 @@ class CCMainGameView: NSView {
     var tileSize : Int = 32
     var mapWidth : Int = 0
     var mapHeight : Int = 0
+    var dirtImage : NSImage? = NSImage(named: "Dirt")
+    var waterImage : NSImage? = NSImage(named: "Water")
+    var treesImage : NSImage? = NSImage(named: "Trees")
+    
     
     override var fittingSize : NSSize {
         get {
@@ -46,13 +61,22 @@ class CCMainGameView: NSView {
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
                 var type = currentMap!.terrain![i][j]
-                if i % 2 == 0 && j % 2 == 0 || i % 2 != 0 && j % 2 != 0 {
-                    CGContextSetRGBFillColor(layerContext, 0, 1, 0, 1)
-                } else {
-                    CGContextSetRGBFillColor(layerContext, 1, 0, 0, 1)
+                var tileToDraw : NSImage?
+                switch type {
+                case .CCTERRAIN_WATER:
+                    tileToDraw = waterImage
+                case .CCTERRAIN_TREE:
+                    tileToDraw = treesImage
+                case .CCTERRAIN_DIRT:
+                    tileToDraw = dirtImage
+                default:
+                    tileToDraw = dirtImage
                 }
-                CGContextFillRect(layerContext, NSRect(x: i*tileSize,
-                    y: j*tileSize, width: tileSize,height: tileSize))
+                
+                let toDraw = tileToDraw?.CGImage
+                CGContextDrawImage(layerContext, NSRect(x: i*tileSize,
+                    y: j*tileSize, width: tileSize,height: tileSize), toDraw)
+                
             }
         }
         self.layout()
