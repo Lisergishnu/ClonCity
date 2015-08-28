@@ -434,7 +434,7 @@
             <rect key="contentRect" x="179" y="206" width="537" height="509"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="481" height="360"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="537" height="509"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -456,28 +456,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="6qA-JW-uCF">
-                        <rect key="frame" x="-1" y="21" width="539" height="489"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" copiesOnScroll="NO" id="a6t-56-miD">
-                            <rect key="frame" x="1" y="1" width="166" height="79"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <customView id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="537" height="487"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </customView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="hcb-T1-cGj">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Xfg-CD-Cih">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
                     <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
                         <rect key="frame" x="408" y="3" width="111" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -487,6 +465,10 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="22" width="32" height="32"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>
@@ -536,7 +518,7 @@
                     <button id="fcI-nR-Lp2">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="PLines" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e5h-qB-3Fh">
+                        <buttonCell key="cell" type="square" title="PLine" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e5h-qB-3Fh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -728,7 +710,6 @@
         </customView>
         <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
-                <outlet property="mainScrollView" destination="6qA-JW-uCF" id="I1h-OI-JLa"/>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
                 <outlet property="minimap" destination="n0O-Fh-9x6" id="rhT-9K-FAY"/>
                 <outlet property="terraformingPanel" destination="VbS-cM-Nhz" id="DsC-oQ-6ax"/>
