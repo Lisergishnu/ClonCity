@@ -439,27 +439,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField identifier="PopLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SKe-G4-iJD">
-                        <rect key="frame" x="18" y="3" width="102" height="17"/>
+                        <rect key="frame" x="18" y="3" width="79" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  ########" id="IKJ-cs-OOi">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  -------" id="IKJ-cs-OOi">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField identifier="YearLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mah-C2-FPl">
-                        <rect key="frame" x="235" y="3" width="67" height="17"/>
+                        <rect key="frame" x="235" y="3" width="58" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ####" id="FBT-Xt-F5y">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
-                        <rect key="frame" x="408" y="3" width="111" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: ########" id="jmJ-hV-0hk">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ----" id="FBT-Xt-F5y">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -487,6 +478,15 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
+                        <rect key="frame" x="431" y="3" width="93" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>
@@ -730,6 +730,7 @@
             <connections>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
                 <outlet property="minimap" destination="n0O-Fh-9x6" id="rhT-9K-FAY"/>
+                <outlet property="minimapViewController" destination="JhO-aS-t1W" id="0j7-Qw-ecY"/>
                 <outlet property="preparingMapModalView" destination="jgu-cc-UlN" id="YZw-FP-LD5"/>
                 <outlet property="preparingMapModalViewController" destination="jTO-vT-t4t" id="LZT-Sf-0DW"/>
                 <outlet property="preparingMapModalViewProgressBar" destination="PVl-3a-2h7" id="k5y-Lv-UWa"/>
@@ -789,6 +790,12 @@
             </connections>
             <point key="canvasLocation" x="-621" y="20"/>
         </window>
+        <viewController id="JhO-aS-t1W" userLabel="Minimap View Controller" customClass="CCMinimapViewController" customModule="ClonCity" customModuleProvider="target">
+            <connections>
+                <outlet property="minimapPanel" destination="n0O-Fh-9x6" id="nny-EH-VuF"/>
+                <outlet property="view" destination="pBh-dZ-Yjf" id="sHm-ai-Cqu"/>
+            </connections>
+        </viewController>
         <viewController id="jTO-vT-t4t" userLabel="Popover View Controller">
             <connections>
                 <outlet property="view" destination="jgu-cc-UlN" id="OLR-3t-Xg0"/>

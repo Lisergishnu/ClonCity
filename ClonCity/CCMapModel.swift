@@ -27,5 +27,10 @@ class CCMapModel {
             repeatedValue:Array(count:height, repeatedValue:defaultTerrain))
         self.width = width
         self.height = height
+        
+        terrain![3][3] = CCTerrainType.CCTERRAIN_DIRT
+        terrain![3][4] = CCTerrainType.CCTERRAIN_DIRT
+        terrain![4][3] = CCTerrainType.CCTERRAIN_DIRT
+        
     }
 }

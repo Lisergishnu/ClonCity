@@ -13,7 +13,7 @@ class CCMainGameViewController: NSViewController {
     @IBOutlet weak var toolsPanel: NSPanel!
     @IBOutlet weak var mainWindow: NSWindow!
     @IBOutlet weak var terraformingPanel: NSPanel!
-    @IBOutlet weak var minimap: NSPanel!
+    @IBOutlet weak var minimapViewController : CCMinimapViewController!
     @IBOutlet weak var preparingMapModalViewController: NSViewController!
     @IBOutlet weak var preparingMapModalViewProgressBar: NSProgressIndicator!
     
@@ -28,7 +28,6 @@ class CCMainGameViewController: NSViewController {
     func prepareInterfaceForMapEditing() {
         toolsPanel.orderFrontRegardless()
         terraformingPanel.orderFrontRegardless()
-        minimap.orderFrontRegardless()
         mainWindow.makeKeyAndOrderFront(nil)
         mainWindow.title = "Nuevo Mapa"
         mainWindow.makeMainWindow()
@@ -43,6 +42,7 @@ class CCMainGameViewController: NSViewController {
         mapUnderEdit!.createEmptyModel(100, height: 100, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
         let mapview = view as! CCMainGameView
         mapview.initializeBackgroundRenderingLayer(mapUnderEdit!)
+        minimapViewController.showMinimap(mapUnderEdit!)
         
         preparingMapModalViewProgressBar.stopAnimation(self)
         self.dismissViewController(preparingMapModalViewController)
