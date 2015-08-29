@@ -730,6 +730,9 @@
             <connections>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
                 <outlet property="minimap" destination="n0O-Fh-9x6" id="rhT-9K-FAY"/>
+                <outlet property="preparingMapModalView" destination="jgu-cc-UlN" id="YZw-FP-LD5"/>
+                <outlet property="preparingMapModalViewController" destination="jTO-vT-t4t" id="LZT-Sf-0DW"/>
+                <outlet property="preparingMapModalViewProgressBar" destination="PVl-3a-2h7" id="k5y-Lv-UWa"/>
                 <outlet property="terraformingPanel" destination="VbS-cM-Nhz" id="DsC-oQ-6ax"/>
                 <outlet property="toolsPanel" destination="aQJ-Fg-nat" id="y9u-DF-8Fg"/>
                 <outlet property="view" destination="dpQ-Pa-xhE" id="uie-4h-KEG"/>
@@ -786,10 +789,41 @@
             </connections>
             <point key="canvasLocation" x="-621" y="20"/>
         </window>
+        <viewController id="jTO-vT-t4t" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="jgu-cc-UlN" id="OLR-3t-Xg0"/>
+            </connections>
+        </viewController>
+        <popover id="99p-XQ-IzM">
+            <connections>
+                <outlet property="contentViewController" destination="jTO-vT-t4t" id="4bh-vX-OXO"/>
+                <outlet property="delegate" destination="jgu-cc-UlN" id="uet-BM-47Q"/>
+            </connections>
+        </popover>
         <viewController id="oPk-eO-Lii" userLabel="Splash View Controller" customClass="CCSplashViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="8tt-CG-kRa" id="BIt-qL-0xU"/>
             </connections>
         </viewController>
+        <customView id="jgu-cc-UlN" userLabel="Preparing Map">
+            <rect key="frame" x="0.0" y="-5" width="480" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uzw-Yd-P6g">
+                    <rect key="frame" x="18" y="44" width="126" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preparando Mapa..." id="mPf-0z-jc6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator canDrawConcurrently="YES" maxValue="100" indeterminate="YES" style="bar" id="PVl-3a-2h7">
+                    <rect key="frame" x="20" y="11" width="440" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+            </subviews>
+            <point key="canvasLocation" x="-621" y="280.5"/>
+        </customView>
     </objects>
 </document>

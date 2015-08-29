@@ -14,7 +14,8 @@ class CCMainGameViewController: NSViewController {
     @IBOutlet weak var mainWindow: NSWindow!
     @IBOutlet weak var terraformingPanel: NSPanel!
     @IBOutlet weak var minimap: NSPanel!
-    @IBOutlet weak var mainScrollView: NSScrollView!
+    @IBOutlet weak var preparingMapModalViewController: NSViewController!
+    @IBOutlet weak var preparingMapModalViewProgressBar: NSProgressIndicator!
     
     var isEditingMap : Bool = false
     var mapUnderEdit : CCMapModel?
@@ -32,10 +33,18 @@ class CCMainGameViewController: NSViewController {
         mainWindow.title = "Nuevo Mapa"
         mainWindow.makeMainWindow()
         
+        self.presentViewControllerAsSheet(preparingMapModalViewController)
+        preparingMapModalViewProgressBar.usesThreadedAnimation = true
+        preparingMapModalViewProgressBar.bezeled = true
+        preparingMapModalViewProgressBar.startAnimation(self)
+        
         isEditingMap = true
         mapUnderEdit = CCMapModel()
         mapUnderEdit!.createEmptyModel(100, height: 100, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
         let mapview = view as! CCMainGameView
         mapview.initializeBackgroundRenderingLayer(mapUnderEdit!)
+        
+        preparingMapModalViewProgressBar.stopAnimation(self)
+        self.dismissViewController(preparingMapModalViewController)
     }
 }
