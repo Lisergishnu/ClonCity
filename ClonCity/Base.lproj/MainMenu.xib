@@ -456,6 +456,15 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
+                        <rect key="frame" x="431" y="3" width="93" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5t6-gb-yJg">
                         <rect key="frame" x="0.0" y="21" width="537" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -478,15 +487,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
-                        <rect key="frame" x="431" y="3" width="93" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>
@@ -507,7 +507,13 @@
                         <buttonCell key="cell" type="square" title="Move" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fg8-yh-TSU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
+                        <connections>
+                            <action selector="deselectMapManipulationTool:" target="w0v-1A-wVW" id="1kO-Ig-BEK"/>
+                        </connections>
                     </button>
                     <button id="m2c-rZ-PaS">
                         <rect key="frame" x="0.0" y="94" width="48" height="48"/>
@@ -572,47 +578,48 @@
         <window title="Terraformación" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="VbS-cM-Nhz" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1045" y="526" width="95" height="94"/>
+            <rect key="contentRect" x="1045" y="526" width="100" height="141"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="Y5D-2V-zQI">
-                <rect key="frame" x="-1" y="0.0" width="95" height="94"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="141"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button id="NvH-g2-uO1">
-                        <rect key="frame" x="0.0" y="47" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Agua" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSJ-3f-8e7">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <button id="2MW-pZ-Ctc">
-                        <rect key="frame" x="47" y="47" width="48" height="48"/>
+                        <rect key="frame" x="0.0" y="47" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Tierra" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHF-vW-Vte">
+                        <buttonCell key="cell" type="square" title="Tierra" bezelStyle="shadowlessSquare" image="Dirt" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHF-vW-Vte">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                    </button>
-                    <button id="Uvj-3R-0lb">
-                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Pasto" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KAI-FG-mM2">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
+                        <connections>
+                            <action selector="selectDirtForTerrainEditing:" target="w0v-1A-wVW" id="eHo-c6-Kez"/>
+                        </connections>
                     </button>
                     <button id="hKq-fM-Ldj">
-                        <rect key="frame" x="47" y="0.0" width="48" height="48"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Arboles" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVY-TT-Ltm">
+                        <buttonCell key="cell" type="square" title="Árboles" bezelStyle="shadowlessSquare" image="Trees" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVY-TT-Ltm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="selectTreesForTerrainEditing:" target="w0v-1A-wVW" id="LKy-tJ-zn4"/>
+                        </connections>
+                    </button>
+                    <button id="NvH-g2-uO1">
+                        <rect key="frame" x="0.0" y="94" width="100" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" title="Agua" bezelStyle="shadowlessSquare" image="Water" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSJ-3f-8e7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectWaterForTerrainEditing:" target="w0v-1A-wVW" id="iqi-gS-beM"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-10.5" y="-699"/>
+            <point key="canvasLocation" x="-8" y="-675.5"/>
         </window>
         <window title="Minimapa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="n0O-Fh-9x6" userLabel="Minimap" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
@@ -729,9 +736,7 @@
         <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
-                <outlet property="minimap" destination="n0O-Fh-9x6" id="rhT-9K-FAY"/>
                 <outlet property="minimapViewController" destination="JhO-aS-t1W" id="0j7-Qw-ecY"/>
-                <outlet property="preparingMapModalView" destination="jgu-cc-UlN" id="YZw-FP-LD5"/>
                 <outlet property="preparingMapModalViewController" destination="jTO-vT-t4t" id="LZT-Sf-0DW"/>
                 <outlet property="preparingMapModalViewProgressBar" destination="PVl-3a-2h7" id="k5y-Lv-UWa"/>
                 <outlet property="terraformingPanel" destination="VbS-cM-Nhz" id="DsC-oQ-6ax"/>
@@ -833,4 +838,9 @@
             <point key="canvasLocation" x="-621" y="280.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="Dirt" width="32" height="32"/>
+        <image name="Trees" width="32" height="32"/>
+        <image name="Water" width="32" height="32"/>
+    </resources>
 </document>

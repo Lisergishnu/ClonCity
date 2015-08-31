@@ -17,12 +17,72 @@ class CCMainGameViewController: NSViewController {
     @IBOutlet weak var preparingMapModalViewController: NSViewController!
     @IBOutlet weak var preparingMapModalViewProgressBar: NSProgressIndicator!
     
+    enum CCMapManipulationTool {
+        case CCTERRAIN_DIRT
+        case CCTERRAIN_WATER
+        case CCTERRAIN_TREES
+        case CCBUILDING_RESIDENTIAL
+        case CCBUILDING_COMERCIAL
+        case CCBUILDING_INDUSTRIAL
+        case CCBUILDING_POWERLINE
+        case CCBUILDING_POWERPLANT
+        case CCBUILDING_ROAD
+    }
+    
     var isEditingMap : Bool = false
     var mapUnderEdit : CCMapModel?
+    var currentToolSelected : CCMainGameViewController.CCMapManipulationTool?
+    
+    @IBAction func selectDirtForTerrainEditing(sender: AnyObject?) {
+        if (isEditingMap) {
+            currentToolSelected = CCMapManipulationTool.CCTERRAIN_DIRT
+        }
+        else
+        {
+            NSLog("Warning: Selected terrain for editing outside of edit mode.")
+        }
+        
+        updateView()
+    }
+    
+    @IBAction func selectWaterForTerrainEditing(sender: AnyObject?) {
+        if (isEditingMap) {
+            currentToolSelected = CCMapManipulationTool.CCTERRAIN_WATER
+        }
+        else
+        {
+            NSLog("Warning: Selected terrain for editing outside of edit mode.")
+        }
+        
+        updateView()
+    }
+    
+    @IBAction func selectTreesForTerrainEditing(sender: AnyObject?) {
+        if (isEditingMap) {
+            currentToolSelected = CCMapManipulationTool.CCTERRAIN_TREES
+        }
+        else
+        {
+            NSLog("Warning: Selected terrain for editing outside of edit mode.")
+        }
+        
+        updateView()
+    }
+    
+    @IBAction func deselectMapManipulationTool(sender: AnyObject?) {
+        currentToolSelected = nil
+        
+        updateView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Created game view")
+    }
+    
+    func updateView() {
+        let v = view as! CCMainGameView
+        v.setCurrentSelectedTool(currentToolSelected)
     }
     
     func prepareInterfaceForMapEditing() {

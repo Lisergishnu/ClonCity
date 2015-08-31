@@ -13,7 +13,6 @@ class CCMapModel {
     enum CCTerrainType {
         case CCTERRAIN_WATER
         case CCTERRAIN_DIRT
-        case CCTERRAIN_GRASS
         case CCTERRAIN_TREE
     }
     

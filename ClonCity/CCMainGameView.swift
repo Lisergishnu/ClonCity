@@ -31,12 +31,29 @@ class CCMainGameView: NSView {
     var dirtImage : NSImage? = NSImage(named: "Dirt")
     var waterImage : NSImage? = NSImage(named: "Water")
     var treesImage : NSImage? = NSImage(named: "Trees")
+    var currentSelectedTool : CCMainGameViewController.CCMapManipulationTool?
     
+    override func acceptsFirstMouse(theEvent: NSEvent) -> Bool {
+        return Bool(true)
+    }
+    
+    override func mouseDown(theEvent: NSEvent) {
+        var point = theEvent.locationInWindow
+        point = self.convertPoint(point, fromView: nil)
+        NSLog("Mouse touched at (%f, %f)", point.x, point.y)
+    }
     
     override var fittingSize : NSSize {
         get {
             return NSSize(width: mapWidth, height: mapHeight)
         }
+    }
+    
+    func setCurrentSelectedTool(tool: CCMainGameViewController.CCMapManipulationTool?) {
+        currentSelectedTool = tool
+        self.needsDisplay = true
+        self.window!.invalidateCursorRectsForView(self)
+        self.window!.makeKeyWindow()
     }
     
     func initializeBackgroundRenderingLayer(initialMap: CCMapModel) {
@@ -54,6 +71,28 @@ class CCMainGameView: NSView {
         layerContext = CGLayerGetContext(offscreenLayer)
         self.wantsLayer = true
         updateCurrentMap(initialMap)
+    }
+    
+    override func resetCursorRects() {
+        if (currentSelectedTool != nil) {
+            
+            var toDraw : NSImage?
+            switch currentSelectedTool! {
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_WATER:
+                toDraw = waterImage
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_TREES:
+                toDraw = treesImage
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_DIRT:
+                toDraw = dirtImage
+            default:
+                break
+            }
+            
+            let cur = NSCursor(image: toDraw!, hotSpot: NSPoint(x: 16,y: 16))
+            self.addCursorRect(self.bounds, cursor: cur)
+        } else {
+            self.addCursorRect(self.bounds, cursor: NSCursor.arrowCursor())
+        }
     }
     
     func updateCurrentMap(updatedMap: CCMapModel) {
@@ -91,5 +130,28 @@ class CCMainGameView: NSView {
         
         let context = NSGraphicsContext.currentContext()!.CGContext
         CGContextDrawLayerInRect(context, mapviewBounds!, offscreenLayer)
+        
+        if (currentSelectedTool != nil) {
+            
+            var ml = self.window!.mouseLocationOutsideOfEventStream
+            ml = self.convertPoint(ml, fromView: nil)
+            NSLog("Mouse moved at (%f, %f)", ml.x, ml.y)
+            
+             var toDraw : NSImage?
+            switch currentSelectedTool! {
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_WATER:
+                toDraw = waterImage
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_TREES:
+                toDraw = treesImage
+            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_DIRT:
+                toDraw = dirtImage
+            default:
+                break
+            }
+            
+            let d = toDraw?.CGImage
+            CGContextDrawImage(context, NSRect(x: ml.x,
+                y: ml.y, width: CGFloat(tileSize),height: CGFloat(tileSize)), d)
+        }
     }
 }
