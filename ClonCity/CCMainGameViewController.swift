@@ -75,6 +75,37 @@ class CCMainGameViewController: NSViewController {
         updateView()
     }
     
+    override func mouseDragged(theEvent: NSEvent) {
+        var point = theEvent.locationInWindow
+        point = view.convertPoint(point, fromView: nil)
+        NSLog("Mouse touched at (%f, %f)", point.x, point.y)
+        
+        if currentToolSelected != nil {
+            let v = view as! CCMainGameView
+            var i : Int = Int(point.x / CGFloat(v.tileSize))
+            var j : Int = Int(point.y / CGFloat(v.tileSize))
+            
+            var t : CCMapModel.CCTerrainType = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
+            switch currentToolSelected! {
+            case .CCTERRAIN_DIRT:
+                 t = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
+            case .CCTERRAIN_WATER:
+                t = CCMapModel.CCTerrainType.CCTERRAIN_WATER
+            case .CCTERRAIN_TREES:
+                t = CCMapModel.CCTerrainType.CCTERRAIN_TREE
+            default:
+                break
+            }
+            
+            mapUnderEdit!.terrain![i][j] = t
+            v.drawTerrainTileAtTileCoordinate(i, y: j, type: t)
+            v.needsDisplay = true
+            minimapViewController.updateMinimap(mapUnderEdit!)
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Created game view")

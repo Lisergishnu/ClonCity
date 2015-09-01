@@ -21,6 +21,7 @@ extension NSImage {
 
 class CCMainGameView: NSView {
     
+    
     var currentMap : CCMapModel?
     var offscreenLayer : CGLayer?
     var layerContext : CGContext?
@@ -35,12 +36,6 @@ class CCMainGameView: NSView {
     
     override func acceptsFirstMouse(theEvent: NSEvent) -> Bool {
         return Bool(true)
-    }
-    
-    override func mouseDown(theEvent: NSEvent) {
-        var point = theEvent.locationInWindow
-        point = self.convertPoint(point, fromView: nil)
-        NSLog("Mouse touched at (%f, %f)", point.x, point.y)
     }
     
     override var fittingSize : NSSize {
@@ -70,7 +65,7 @@ class CCMainGameView: NSView {
             CGSize(width: mapWidth,height: mapHeight), nil)
         layerContext = CGLayerGetContext(offscreenLayer)
         self.wantsLayer = true
-        updateCurrentMap(initialMap)
+        drawCurrentMap(initialMap)
     }
     
     override func resetCursorRects() {
@@ -88,38 +83,43 @@ class CCMainGameView: NSView {
                 break
             }
             
-            let cur = NSCursor(image: toDraw!, hotSpot: NSPoint(x: 16,y: 16))
+            let cur = NSCursor(image: toDraw!, hotSpot: NSPoint(x: 0,y: 0))
             self.addCursorRect(self.bounds, cursor: cur)
         } else {
             self.addCursorRect(self.bounds, cursor: NSCursor.arrowCursor())
         }
     }
     
-    func updateCurrentMap(updatedMap: CCMapModel) {
+    func drawCurrentMap(updatedMap: CCMapModel) {
         currentMap = updatedMap
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
                 var type = currentMap!.terrain![i][j]
-                var tileToDraw : NSImage?
-                switch type {
-                case .CCTERRAIN_WATER:
-                    tileToDraw = waterImage
-                case .CCTERRAIN_TREE:
-                    tileToDraw = treesImage
-                case .CCTERRAIN_DIRT:
-                    tileToDraw = dirtImage
-                default:
-                    tileToDraw = dirtImage
-                }
-                
-                let toDraw = tileToDraw?.CGImage
-                CGContextDrawImage(layerContext, NSRect(x: i*tileSize,
-                    y: j*tileSize, width: tileSize,height: tileSize), toDraw)
-                
+                drawTerrainTileAtTileCoordinate(i, y: j, type: type)
             }
         }
         self.layout()
         self.needsDisplay = true
+    }
+    
+    func drawTerrainTileAtTileCoordinate(x: Int, y: Int,
+        type: CCMapModel.CCTerrainType) {
+            var tileToDraw : NSImage?
+            switch type {
+            case .CCTERRAIN_WATER:
+                tileToDraw = waterImage
+            case .CCTERRAIN_TREE:
+                tileToDraw = treesImage
+            case .CCTERRAIN_DIRT:
+                tileToDraw = dirtImage
+            default:
+                tileToDraw = dirtImage
+            }
+            
+            let toDraw = tileToDraw?.CGImage
+            CGContextDrawImage(layerContext, NSRect(x: x*tileSize,
+                y: y*tileSize, width: tileSize,height: tileSize), toDraw)
+        
     }
     
     override func drawRect(dirtyRect: NSRect) {

@@ -17,15 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var terraformWindowMenuItem: NSMenuItem!
     @IBOutlet weak var newMapMenuItem: NSMenuItem!
     
-    @IBAction func createMapMenuDidGetPressed(sender: NSMenuItem) {
-        createNewMap(sender)
-    }
-    
-    @IBAction func createMapButtonDidGetPressed(sender: AnyObject?) {
-        createNewMap(sender)
-    }
-    
-    func createNewMap(sender: AnyObject?) {
+    @IBAction func createNewMap(sender: AnyObject?) {
         splashWindow.orderOut(sender)
         mainGameViewController.prepareInterfaceForMapEditing()
         windowMenu.hidden = false

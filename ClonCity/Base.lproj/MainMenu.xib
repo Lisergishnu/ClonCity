@@ -79,7 +79,7 @@
                             <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="createMapMenuDidGetPressed:" target="Voe-Tx-rLC" id="pZc-zC-5yO"/>
+                                    <action selector="createNewMap:" target="Voe-Tx-rLC" id="TFe-Wn-V8g"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -465,7 +465,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5t6-gb-yJg">
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="5t6-gb-yJg">
                         <rect key="frame" x="0.0" y="21" width="537" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="PnR-YP-L0a">
@@ -776,7 +776,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="createMapButtonDidGetPressed:" target="Voe-Tx-rLC" id="Paf-3f-UWu"/>
+                            <action selector="createNewMap:" target="Voe-Tx-rLC" id="41h-BN-JQA"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="w9b-q4-ykf">
@@ -797,7 +797,7 @@ Gw
         </window>
         <viewController id="JhO-aS-t1W" userLabel="Minimap View Controller" customClass="CCMinimapViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
-                <outlet property="minimapPanel" destination="n0O-Fh-9x6" id="nny-EH-VuF"/>
+                <outlet property="minimapPanel" destination="n0O-Fh-9x6" id="bNh-Gc-jOr"/>
                 <outlet property="view" destination="pBh-dZ-Yjf" id="sHm-ai-Cqu"/>
             </connections>
         </viewController>
