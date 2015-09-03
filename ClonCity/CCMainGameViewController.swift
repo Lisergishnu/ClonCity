@@ -75,6 +75,10 @@ class CCMainGameViewController: NSViewController {
         updateView()
     }
     
+    override func mouseUp(theEvent: NSEvent) {
+        view.needsDisplay = true
+    }
+    
     override func mouseDragged(theEvent: NSEvent) {
         var point = theEvent.locationInWindow
         point = view.convertPoint(point, fromView: nil)

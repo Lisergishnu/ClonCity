@@ -130,28 +130,5 @@ class CCMainGameView: NSView {
         
         let context = NSGraphicsContext.currentContext()!.CGContext
         CGContextDrawLayerInRect(context, mapviewBounds!, offscreenLayer)
-        
-        if (currentSelectedTool != nil) {
-            
-            var ml = self.window!.mouseLocationOutsideOfEventStream
-            ml = self.convertPoint(ml, fromView: nil)
-            NSLog("Mouse moved at (%f, %f)", ml.x, ml.y)
-            
-             var toDraw : NSImage?
-            switch currentSelectedTool! {
-            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_WATER:
-                toDraw = waterImage
-            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_TREES:
-                toDraw = treesImage
-            case CCMainGameViewController.CCMapManipulationTool.CCTERRAIN_DIRT:
-                toDraw = dirtImage
-            default:
-                break
-            }
-            
-            let d = toDraw?.CGImage
-            CGContextDrawImage(context, NSRect(x: ml.x,
-                y: ml.y, width: CGFloat(tileSize),height: CGFloat(tileSize)), d)
-        }
     }
 }
