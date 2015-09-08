@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF046BAC1B9E0754003F376F /* CCMapDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF046BAB1B9E0754003F376F /* CCMapDocument.swift */; };
 		FF96B6661B8432320055BF44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B6651B8432320055BF44 /* AppDelegate.swift */; };
 		FF96B6681B8432320055BF44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6671B8432320055BF44 /* Images.xcassets */; };
 		FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6691B8432320055BF44 /* MainMenu.xib */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF046BAB1B9E0754003F376F /* CCMapDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapDocument.swift; sourceTree = "<group>"; };
 		FF96B6601B8432320055BF44 /* ClonCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClonCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96B6641B8432320055BF44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF96B6651B8432320055BF44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */,
 				FFE0B04A1B9132F000C09D09 /* CCMinimapViewController.swift */,
 				FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */,
+				FF046BAB1B9E0754003F376F /* CCMapDocument.swift */,
 				FFE0B0491B9132C600C09D09 /* Models */,
 				FF96B6631B8432320055BF44 /* Supporting Files */,
 			);
@@ -242,6 +245,7 @@
 				FF96B68D1B856B2D0055BF44 /* CCMainGameView.swift in Sources */,
 				FF96B68B1B856AA60055BF44 /* CCMainGameViewController.swift in Sources */,
 				FFECABE01B87BCEF005D51EF /* CCSplashViewController.swift in Sources */,
+				FF046BAC1B9E0754003F376F /* CCMapDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

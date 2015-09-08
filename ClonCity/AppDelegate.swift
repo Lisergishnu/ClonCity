@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowMenu.hidden = false
         terraformWindowMenuItem.hidden = false
         newMapMenuItem.hidden = true
+    
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {

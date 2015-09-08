@@ -75,24 +75,34 @@ class CCMainGameViewController: NSViewController {
         updateView()
     }
     
-    override func mouseUp(theEvent: NSEvent) {
-        view.needsDisplay = true
-    }
-    
     override func mouseDragged(theEvent: NSEvent) {
         var point = theEvent.locationInWindow
         point = view.convertPoint(point, fromView: nil)
-        NSLog("Mouse touched at (%f, %f)", point.x, point.y)
+        NSLog("Mouse dragged at (%f, %f)", point.x, point.y)
+        
+        editMapAtPoint(point)
+    }
+    
+    override func mouseDown(theEvent: NSEvent) {
+        var point = theEvent.locationInWindow
+        point = view.convertPoint(point, fromView: nil)
+        NSLog("Mouse down at (%f, %f)", point.x, point.y)
+        
+        editMapAtPoint(point)
+    }
+    
+    func editMapAtPoint(point: NSPoint) {
+
         
         if currentToolSelected != nil {
             let v = view as! CCMainGameView
-            var i : Int = Int(point.x / CGFloat(v.tileSize))
-            var j : Int = Int(point.y / CGFloat(v.tileSize))
+            var i : Int = Int((point.x + 16) / CGFloat(v.tileSize))
+            var j : Int = Int((point.y - 16) / CGFloat(v.tileSize))
             
             var t : CCMapModel.CCTerrainType = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
             switch currentToolSelected! {
             case .CCTERRAIN_DIRT:
-                 t = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
+                t = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
             case .CCTERRAIN_WATER:
                 t = CCMapModel.CCTerrainType.CCTERRAIN_WATER
             case .CCTERRAIN_TREES:
@@ -106,7 +116,7 @@ class CCMainGameViewController: NSViewController {
             v.needsDisplay = true
             minimapViewController.updateMinimap(mapUnderEdit!)
         }
-        
+
     }
     
     
