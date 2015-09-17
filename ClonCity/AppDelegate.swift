@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainGameViewController.prepareInterfaceForMapEditing()
         windowMenu.hidden = false
         terraformWindowMenuItem.hidden = false
-        newMapMenuItem.hidden = true
-    
+        newMapMenuItem.hidden = false
+        
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {

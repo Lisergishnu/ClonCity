@@ -11,7 +11,6 @@ import Cocoa
 class CCMainGameViewController: NSViewController {
     
     @IBOutlet weak var toolsPanel: NSPanel!
-    @IBOutlet weak var mainWindow: NSWindow!
     @IBOutlet weak var terraformingPanel: NSPanel!
     @IBOutlet weak var minimapViewController : CCMinimapViewController!
     @IBOutlet weak var preparingMapModalViewController: NSViewController!
@@ -96,8 +95,8 @@ class CCMainGameViewController: NSViewController {
         
         if currentToolSelected != nil {
             let v = view as! CCMainGameView
-            var i : Int = Int((point.x + 16) / CGFloat(v.tileSize))
-            var j : Int = Int((point.y - 16) / CGFloat(v.tileSize))
+            let i : Int = Int((point.x + 16) / CGFloat(v.tileSize))
+            let j : Int = Int((point.y - 16) / CGFloat(v.tileSize))
             
             var t : CCMapModel.CCTerrainType = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
             switch currentToolSelected! {
@@ -133,9 +132,6 @@ class CCMainGameViewController: NSViewController {
     func prepareInterfaceForMapEditing() {
         toolsPanel.orderFrontRegardless()
         terraformingPanel.orderFrontRegardless()
-        mainWindow.makeKeyAndOrderFront(nil)
-        mainWindow.title = "Nuevo Mapa"
-        mainWindow.makeMainWindow()
         
         self.presentViewControllerAsSheet(preparingMapModalViewController)
         preparingMapModalViewProgressBar.usesThreadedAnimation = true

@@ -79,7 +79,7 @@
                             <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="createNewMap:" target="Voe-Tx-rLC" id="TFe-Wn-V8g"/>
+                                    <action selector="newDocument:" target="-1" id="ELK-uS-EFj"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -428,70 +428,6 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="MainGame" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="179" y="206" width="537" height="509"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="481" height="360"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="537" height="509"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField identifier="PopLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SKe-G4-iJD">
-                        <rect key="frame" x="18" y="3" width="79" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  -------" id="IKJ-cs-OOi">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField identifier="YearLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mah-C2-FPl">
-                        <rect key="frame" x="235" y="3" width="58" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ----" id="FBT-Xt-F5y">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
-                        <rect key="frame" x="431" y="3" width="93" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="5t6-gb-yJg">
-                        <rect key="frame" x="0.0" y="21" width="537" height="489"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                        <clipView key="contentView" id="PnR-YP-L0a">
-                            <rect key="frame" x="1" y="1" width="520" height="472"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="537" height="487"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </customView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="E4V-OC-j5e">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6s2-UR-DWT">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-            </view>
-            <contentBorderThickness minY="22"/>
-            <point key="canvasLocation" x="-620.5" y="-491.5"/>
-        </window>
         <window title="Herramientas" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aQJ-Fg-nat" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -735,13 +671,11 @@ Gw
         </customView>
         <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
-                <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
                 <outlet property="minimapViewController" destination="JhO-aS-t1W" id="0j7-Qw-ecY"/>
                 <outlet property="preparingMapModalViewController" destination="jTO-vT-t4t" id="LZT-Sf-0DW"/>
                 <outlet property="preparingMapModalViewProgressBar" destination="PVl-3a-2h7" id="k5y-Lv-UWa"/>
                 <outlet property="terraformingPanel" destination="VbS-cM-Nhz" id="DsC-oQ-6ax"/>
                 <outlet property="toolsPanel" destination="aQJ-Fg-nat" id="y9u-DF-8Fg"/>
-                <outlet property="view" destination="dpQ-Pa-xhE" id="uie-4h-KEG"/>
             </connections>
         </viewController>
         <window title="ClonCity" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="fkd-td-6O7" userLabel="Splash Window">

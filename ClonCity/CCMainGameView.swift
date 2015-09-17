@@ -34,7 +34,7 @@ class CCMainGameView: NSView {
     var treesImage : NSImage? = NSImage(named: "Trees")
     var currentSelectedTool : CCMainGameViewController.CCMapManipulationTool?
     
-    override func acceptsFirstMouse(theEvent: NSEvent) -> Bool {
+    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return Bool(true)
     }
     
@@ -94,7 +94,7 @@ class CCMainGameView: NSView {
         currentMap = updatedMap
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
-                var type = currentMap!.terrain![i][j]
+                let type = currentMap!.terrain![i][j]
                 drawTerrainTileAtTileCoordinate(i, y: j, type: type)
             }
         }

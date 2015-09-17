@@ -2,7 +2,7 @@
 //  CCMapDocument.swift
 //  ClonCity
 //
-//  Created by Marco Benzi Tobar on 07-09-15.
+//  Created by Marco Benzi Tobar on 10-09-15.
 //  Copyright (c) 2015 Marco Benzi Tobar. All rights reserved.
 //
 
@@ -10,36 +10,32 @@ import Cocoa
 
 class CCMapDocument: NSDocument {
 
-    /*
     override var windowNibName: String? {
         // Override returning the nib file name of the document
         // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
         return "CCMapDocument"
     }
-    */
 
     override func windowControllerDidLoadNib(aController: NSWindowController) {
         super.windowControllerDidLoadNib(aController)
         // Add any code here that needs to be executed once the windowController has loaded the document's window.
     }
-
-    override func dataOfType(typeName: String, error outError: NSErrorPointer) -> NSData? {
+    
+    override func dataOfType(typeName: String) throws -> NSData {
         // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
         // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-        outError.memory = NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        return nil
+        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
     
-    override func readFromData(data: NSData, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
+    override func readFromData(data: NSData, ofType typeName: String) throws {
         // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
         // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
         // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-        outError.memory = NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        return false
+        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
 
     override class func autosavesInPlace() -> Bool {
         return true
     }
-
+    
 }

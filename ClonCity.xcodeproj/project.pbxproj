@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF046BAC1B9E0754003F376F /* CCMapDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF046BAB1B9E0754003F376F /* CCMapDocument.swift */; };
 		FF96B6661B8432320055BF44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B6651B8432320055BF44 /* AppDelegate.swift */; };
 		FF96B6681B8432320055BF44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6671B8432320055BF44 /* Images.xcassets */; };
 		FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF96B6691B8432320055BF44 /* MainMenu.xib */; };
@@ -19,6 +18,8 @@
 		FFECABD41B86349B005D51EF /* CCCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD31B86349B005D51EF /* CCCityModel.swift */; };
 		FFECABD61B866BA2005D51EF /* CCMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABD51B866BA2005D51EF /* CCMapModel.swift */; };
 		FFECABE01B87BCEF005D51EF /* CCSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */; };
+		FFF7F1031BA273FD00392221 /* CCMapDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF7F1011BA273FD00392221 /* CCMapDocument.swift */; };
+		FFF7F1041BA273FD00392221 /* CCMapDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF7F1021BA273FD00392221 /* CCMapDocument.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FF046BAB1B9E0754003F376F /* CCMapDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapDocument.swift; sourceTree = "<group>"; };
 		FF96B6601B8432320055BF44 /* ClonCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClonCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF96B6641B8432320055BF44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF96B6651B8432320055BF44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		FFECABD31B86349B005D51EF /* CCCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCityModel.swift; sourceTree = "<group>"; };
 		FFECABD51B866BA2005D51EF /* CCMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapModel.swift; sourceTree = "<group>"; };
 		FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSplashViewController.swift; sourceTree = "<group>"; };
+		FFF7F1011BA273FD00392221 /* CCMapDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMapDocument.swift; sourceTree = "<group>"; };
+		FFF7F1021BA273FD00392221 /* CCMapDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCMapDocument.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,8 @@
 		FF96B6621B8432320055BF44 /* ClonCity */ = {
 			isa = PBXGroup;
 			children = (
+				FFF7F1011BA273FD00392221 /* CCMapDocument.swift */,
+				FFF7F1021BA273FD00392221 /* CCMapDocument.xib */,
 				FFECABDF1B87BCEF005D51EF /* CCSplashViewController.swift */,
 				FF96B6651B8432320055BF44 /* AppDelegate.swift */,
 				FF96B6671B8432320055BF44 /* Images.xcassets */,
@@ -97,7 +101,6 @@
 				FF96B68C1B856B2D0055BF44 /* CCMainGameView.swift */,
 				FFE0B04A1B9132F000C09D09 /* CCMinimapViewController.swift */,
 				FF96B68E1B856BAD0055BF44 /* CCMinimapGameView.swift */,
-				FF046BAB1B9E0754003F376F /* CCMapDocument.swift */,
 				FFE0B0491B9132C600C09D09 /* Models */,
 				FF96B6631B8432320055BF44 /* Supporting Files */,
 			);
@@ -182,6 +185,8 @@
 		FF96B6581B8432320055BF44 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Marco Benzi Tobar";
 				TargetAttributes = {
@@ -219,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF96B6681B8432320055BF44 /* Images.xcassets in Resources */,
+				FFF7F1041BA273FD00392221 /* CCMapDocument.xib in Resources */,
 				FF96B66B1B8432320055BF44 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +251,7 @@
 				FF96B68D1B856B2D0055BF44 /* CCMainGameView.swift in Sources */,
 				FF96B68B1B856AA60055BF44 /* CCMainGameViewController.swift in Sources */,
 				FFECABE01B87BCEF005D51EF /* CCSplashViewController.swift in Sources */,
-				FF046BAC1B9E0754003F376F /* CCMapDocument.swift in Sources */,
+				FFF7F1031BA273FD00392221 /* CCMapDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
