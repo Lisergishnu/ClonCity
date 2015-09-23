@@ -96,8 +96,8 @@ class CCMainGameViewController: NSViewController {
         
         if currentToolSelected != nil {
             let v = view as! CCMainGameView
-            var i : Int = Int((point.x + 16) / CGFloat(v.tileSize))
-            var j : Int = Int((point.y - 16) / CGFloat(v.tileSize))
+            let i : Int = Int((point.x + 16) / CGFloat(v.tileSize))
+            let j : Int = Int((point.y - 16) / CGFloat(v.tileSize))
             
             var t : CCMapModel.CCTerrainType = CCMapModel.CCTerrainType.CCTERRAIN_DIRT
             switch currentToolSelected! {

@@ -35,7 +35,7 @@ class CCMinimapGameView: NSView {
         
         for var i = 0; i < currentMap?.width; i++ {
             for var j = 0; j < currentMap?.height; j++ {
-                var type = currentMap!.terrain![i][j]
+                let type = currentMap!.terrain![i][j]
                 switch type {
                 case .CCTERRAIN_WATER:
                     CGContextSetRGBFillColor(layerContext, 0, 0, 1, 1)
