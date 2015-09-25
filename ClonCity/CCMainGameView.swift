@@ -8,19 +8,8 @@
 
 import Cocoa
 
-extension NSImage {
-    var CGImage: CGImageRef {
-        get {
-            let imageData = self.TIFFRepresentation
-            let source = CGImageSourceCreateWithData(imageData as! CFDataRef, nil)
-            let maskRef = CGImageSourceCreateImageAtIndex(source, Int(0), nil)
-            return maskRef;
-        }
-    }
-}
-
 class CCMainGameView: NSView {
-    
+        
     
     var currentMap : CCMapModel?
     var offscreenLayer : CGLayer?
@@ -116,7 +105,8 @@ class CCMainGameView: NSView {
                 tileToDraw = dirtImage
             }
             
-            let toDraw = tileToDraw?.CGImage
+            let toDraw = tileToDraw!.CGImageForProposedRect(nil, context: nil, hints: nil)
+            
             CGContextDrawImage(layerContext, NSRect(x: x*tileSize,
                 y: y*tileSize, width: tileSize,height: tileSize), toDraw)
         
