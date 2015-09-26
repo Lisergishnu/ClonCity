@@ -130,7 +130,7 @@ class CCMainGameViewController: NSViewController {
         v.setCurrentSelectedTool(currentToolSelected)
     }
     
-    func prepareInterfaceForMapEditing() {
+    func prepareInterfaceForMapEditing() -> CCMapModel {
         toolsPanel.orderFrontRegardless()
         terraformingPanel.orderFrontRegardless()
         mainWindow.makeKeyAndOrderFront(nil)
@@ -151,5 +151,7 @@ class CCMainGameViewController: NSViewController {
         
         preparingMapModalViewProgressBar.stopAnimation(self)
         self.dismissViewController(preparingMapModalViewController)
+        
+        return mapUnderEdit!
     }
 }

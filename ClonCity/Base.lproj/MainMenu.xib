@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="mainGameViewController" destination="w0v-1A-wVW" id="I0L-d4-PGz"/>
+                <outlet property="mainMapWindow" destination="QvC-M9-y7g" id="k2b-C2-S2v"/>
                 <outlet property="newMapMenuItem" destination="t4Z-72-zeI" id="XEw-Hy-hKB"/>
                 <outlet property="splashWindow" destination="fkd-td-6O7" id="8rY-rN-TzC"/>
                 <outlet property="terraformWindowMenuItem" destination="bIL-Im-9L5" id="GnS-36-6YV"/>
@@ -106,9 +107,9 @@
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
+                            <menuItem title="Guardar Mapa…" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
+                                    <action selector="saveMap:" target="Voe-Tx-rLC" id="wrI-Kz-RVL"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
@@ -469,7 +470,7 @@
                         <rect key="frame" x="0.0" y="21" width="537" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="PnR-YP-L0a">
-                            <rect key="frame" x="1" y="1" width="520" height="472"/>
+                            <rect key="frame" x="1" y="1" width="535" height="487"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
@@ -479,18 +480,18 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="E4V-OC-j5e">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <rect key="frame" x="1" y="472" width="535" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6s2-UR-DWT">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <rect key="frame" x="520" y="1" width="16" height="487"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>
-            <point key="canvasLocation" x="-620.5" y="-491.5"/>
+            <point key="canvasLocation" x="-620.5" y="-340.5"/>
         </window>
         <window title="Herramientas" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aQJ-Fg-nat" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
@@ -627,7 +628,7 @@ Gw
             <rect key="contentRect" x="819" y="206" width="320" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="BPm-nR-VDh">
-                <rect key="frame" x="0.0" y="5" width="320" height="256"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="pBh-dZ-Yjf" customClass="CCMinimapGameView" customModule="ClonCity" customModuleProvider="target">
@@ -818,7 +819,7 @@ Gw
             </connections>
         </viewController>
         <customView id="jgu-cc-UlN" userLabel="Preparing Map">
-            <rect key="frame" x="0.0" y="-5" width="480" height="81"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uzw-Yd-P6g">
