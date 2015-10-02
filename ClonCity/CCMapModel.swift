@@ -38,11 +38,36 @@ class CCMapModel {
         
     }
     
-    init(data: NSData) {
+    init(data: NSData, inout error: NSError?) {
         let s = String(data: data, encoding: NSUTF8StringEncoding)
         let a1 = s?.characters.split {$0 == "\n"}
         width = Int( String( (a1![0].split {$0 == " "})[1] ))!
         height = Int( String( (a1![1].split {$0 == " "})[1] ))!
+        let m = String( a1![2] )
+        var ind = m.startIndex
+        terrain = Array(count:width,
+            repeatedValue:Array(count:height, repeatedValue:CCTerrainType.CCTERRAIN_WATER))
+        for var i=0; i<width; i++ {
+            for var j=0; j<height; j++ {
+                switch m[ind]{
+                case "0":
+                    terrain![i][j] = CCTerrainType.CCTERRAIN_WATER
+                    break;
+                case "1":
+                    terrain![i][j] = CCTerrainType.CCTERRAIN_DIRT
+                    break;
+                case "2":
+                    terrain![i][j] = CCTerrainType.CCTERRAIN_TREE
+                    break;
+                default:
+                    let errorDetail = NSMutableDictionary()
+                    errorDetail.setValue("Error al leer el mapa para editar.", forKey: NSLocalizedDescriptionKey)
+                    error = NSError(domain: "ClonCity", code: 001, userInfo: errorDetail as [NSObject : AnyObject])
+                    return
+                }
+                ind = ind.successor()
+            }
+        }
     }
     
     func createEmptyModel(width: Int, height: Int, defaultTerrain:CCTerrainType) {
@@ -50,10 +75,5 @@ class CCMapModel {
             repeatedValue:Array(count:height, repeatedValue:defaultTerrain))
         self.width = width
         self.height = height
-        
-        terrain![3][3] = CCTerrainType.CCTERRAIN_DIRT
-        terrain![3][4] = CCTerrainType.CCTERRAIN_DIRT
-        terrain![4][3] = CCTerrainType.CCTERRAIN_DIRT
-        
     }
 }

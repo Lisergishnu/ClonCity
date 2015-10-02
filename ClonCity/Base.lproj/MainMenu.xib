@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -442,6 +442,7 @@
                     <textField identifier="PopLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SKe-G4-iJD">
                         <rect key="frame" x="18" y="3" width="79" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  -------" id="IKJ-cs-OOi">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -451,6 +452,7 @@
                     <textField identifier="YearLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mah-C2-FPl">
                         <rect key="frame" x="235" y="3" width="58" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ----" id="FBT-Xt-F5y">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -460,6 +462,7 @@
                     <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
                         <rect key="frame" x="431" y="3" width="93" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -476,19 +479,25 @@
                                 <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="537" height="487"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </customView>
                             </subviews>
+                            <animations/>
                         </clipView>
+                        <animations/>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="E4V-OC-j5e">
-                            <rect key="frame" x="1" y="472" width="535" height="16"/>
+                            <rect key="frame" x="1" y="473" width="520" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6s2-UR-DWT">
-                            <rect key="frame" x="520" y="1" width="16" height="487"/>
+                            <rect key="frame" x="521" y="1" width="15" height="472"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                     </scrollView>
                 </subviews>
+                <animations/>
             </view>
             <contentBorderThickness minY="22"/>
             <point key="canvasLocation" x="-620.5" y="-340.5"/>
@@ -505,6 +514,7 @@
                     <button id="QNh-gH-NQg">
                         <rect key="frame" x="0.0" y="141" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Move" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fg8-yh-TSU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -519,6 +529,7 @@ Gw
                     <button id="m2c-rZ-PaS">
                         <rect key="frame" x="0.0" y="94" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="R" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64p-b5-B0M">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -527,6 +538,7 @@ Gw
                     <button id="hRH-eN-x0Y">
                         <rect key="frame" x="47" y="94" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZA-3E-XSt">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -535,6 +547,7 @@ Gw
                     <button id="jTW-SC-m7N">
                         <rect key="frame" x="47" y="47" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Power Plant" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uaG-Ju-hpk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -543,6 +556,7 @@ Gw
                     <button id="fcI-nR-Lp2">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="PLine" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e5h-qB-3Fh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -551,6 +565,7 @@ Gw
                     <button id="tH8-2V-dCw">
                         <rect key="frame" x="47" y="0.0" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Road" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Niz-Kz-341">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -559,6 +574,7 @@ Gw
                     <button id="skl-iJ-2CM">
                         <rect key="frame" x="47" y="141" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Bulldozer" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sW8-g4-KwK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -567,12 +583,14 @@ Gw
                     <button id="4DZ-9C-jXr">
                         <rect key="frame" x="0.0" y="47" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="I" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftg-C8-j21">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
                 </subviews>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-235.5" y="-651.5"/>
         </window>
@@ -588,6 +606,7 @@ Gw
                     <button id="2MW-pZ-Ctc">
                         <rect key="frame" x="0.0" y="47" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Tierra" bezelStyle="shadowlessSquare" image="Dirt" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHF-vW-Vte">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -599,6 +618,7 @@ Gw
                     <button id="hKq-fM-Ldj">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Árboles" bezelStyle="shadowlessSquare" image="Trees" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVY-TT-Ltm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -610,6 +630,7 @@ Gw
                     <button id="NvH-g2-uO1">
                         <rect key="frame" x="0.0" y="94" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Agua" bezelStyle="shadowlessSquare" image="Water" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSJ-3f-8e7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -619,6 +640,7 @@ Gw
                         </connections>
                     </button>
                 </subviews>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-8" y="-675.5"/>
         </window>
@@ -634,8 +656,10 @@ Gw
                     <customView id="pBh-dZ-Yjf" customClass="CCMinimapGameView" customModule="ClonCity" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                     </customView>
                 </subviews>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-123" y="-365"/>
         </window>
@@ -646,6 +670,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="d1R-BX-0bY">
                     <rect key="frame" x="18" y="223" width="137" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre de la ciudad:" id="CA4-ST-g1l">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -655,6 +680,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bg2-td-g5D">
                     <rect key="frame" x="18" y="168" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre del alcalde:" id="f1S-Pr-KeM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -664,6 +690,7 @@ Gw
                 <textField verticalHuggingPriority="750" id="Q98-pi-YCa">
                     <rect key="frame" x="20" y="138" width="196" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bgX-SE-HGJ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -673,8 +700,9 @@ Gw
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="DaV-OG-kng">
                     <rect key="frame" x="20" y="20" width="155" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="61" height="18"/>
+                    <size key="cellSize" width="60" height="18"/>
                     <size key="intercellSpacing" width="4" height="2"/>
                     <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="lvX-e2-kUu">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -700,6 +728,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hqZ-Pw-Ajg">
                     <rect key="frame" x="18" y="113" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dificultad:" id="obz-Cc-MDg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -709,6 +738,7 @@ Gw
                 <button verticalHuggingPriority="750" id="Lxq-c9-o0l">
                     <rect key="frame" x="352" y="212" width="114" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <buttonCell key="cell" type="push" title="Crear Ciudad" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="wuk-XT-3af">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -717,6 +747,7 @@ Gw
                 <button verticalHuggingPriority="750" id="9nr-z3-9NG">
                     <rect key="frame" x="371" y="13" width="95" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <buttonCell key="cell" type="push" title="Cancelar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hDa-GD-BKu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -725,6 +756,7 @@ Gw
                 <textField verticalHuggingPriority="750" id="m00-04-Zat">
                     <rect key="frame" x="20" y="193" width="196" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7QU-Uo-KjC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -732,6 +764,7 @@ Gw
                     </textFieldCell>
                 </textField>
             </subviews>
+            <animations/>
             <point key="canvasLocation" x="-11" y="25"/>
         </customView>
         <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
@@ -756,6 +789,7 @@ Gw
                     <button verticalHuggingPriority="750" id="4g8-je-jsj">
                         <rect key="frame" x="14" y="13" width="122" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="push" title="Nuevo Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xfz-nv-WCc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -764,6 +798,7 @@ Gw
                     <button verticalHuggingPriority="750" id="rDh-0O-rfC">
                         <rect key="frame" x="342" y="13" width="124" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="push" title="Cargar Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCi-h3-mXS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -772,6 +807,7 @@ Gw
                     <button verticalHuggingPriority="750" id="gYL-Rx-y7p">
                         <rect key="frame" x="184" y="13" width="113" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="push" title="Crear Mapa" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jpm-om-thT">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -783,6 +819,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="w9b-q4-ykf">
                         <rect key="frame" x="133" y="113" width="215" height="91"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="ClonCity" drawsBackground="YES" id="xg4-t0-ek1">
                             <font key="font" size="50" name="Impact"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -790,6 +827,7 @@ Gw
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="SH4-74-omK"/>
@@ -825,6 +863,7 @@ Gw
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uzw-Yd-P6g">
                     <rect key="frame" x="18" y="44" width="126" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preparando Mapa..." id="mPf-0z-jc6">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -834,8 +873,10 @@ Gw
                 <progressIndicator canDrawConcurrently="YES" maxValue="100" indeterminate="YES" style="bar" id="PVl-3a-2h7">
                     <rect key="frame" x="20" y="11" width="440" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                 </progressIndicator>
             </subviews>
+            <animations/>
             <point key="canvasLocation" x="-621" y="280.5"/>
         </customView>
     </objects>

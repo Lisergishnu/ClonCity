@@ -29,8 +29,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         newMapMenuItem.hidden = true
     }
     
-    func loadMapForEdit(map :CCMapModel) {
+    func loadMapForEdit(mapPath : NSURL) {
+        let checkLoad = NSData(contentsOfURL: mapPath)
+        var error : NSError?
+        let map = CCMapModel(data: checkLoad!, error: &error)
+        if (error != nil) {
+            mainMapWindow.presentError(error!)
+            return
+        }
+        mainMapWindow.setTitleWithRepresentedFilename(mapPath.path!)
         
+        mapUnderEdit = map;
     }
     
     @IBAction func saveMap(sender: AnyObject?) {
@@ -44,9 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     fpath = saveDialog.URL!
                     let data = self.mapUnderEdit!.data
                     data.writeToURL(fpath!, atomically: false)
-                    
-                    let checkLoad = NSData(contentsOfURL: fpath!)
-                    self.loadMapForEdit(CCMapModel(data: checkLoad!))
+                    self.loadMapForEdit(fpath!)
                 }
             })
             
