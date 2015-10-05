@@ -72,34 +72,28 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Archivo" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="Nuevo Juego" keyEquivalent="n" id="Was-JA-tGl">
+                            <menuItem title="Nuevo Juego..." keyEquivalent="n" id="Was-JA-tGl">
                                 <connections>
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Cargar Juego..." keyEquivalent="o" id="IAo-SY-fd9">
+                                <connections>
+                                    <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="OFp-Fw-WSn"/>
                             <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
                                     <action selector="createNewMap:" target="Voe-Tx-rLC" id="TFe-Wn-V8g"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                            <menuItem title="Cargar Mapa..." keyEquivalent="o" id="IoD-IM-uXx">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                    <action selector="openDocument:" target="-1" id="oLr-yu-1ED"/>
                                 </connections>
-                            </menuItem>
-                            <menuItem title="Open Recent" id="tXI-mr-wws">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">
-                                    <items>
-                                        <menuItem title="Clear Menu" id="vNY-rz-j42">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="Daa-9d-B3U"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
@@ -841,7 +835,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="SH4-74-omK"/>
             </connections>
-            <point key="canvasLocation" x="-745" y="162.5"/>
+            <point key="canvasLocation" x="-676" y="-323.5"/>
         </window>
         <viewController id="JhO-aS-t1W" userLabel="Minimap View Controller" customClass="CCMinimapViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
