@@ -79,8 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             splashWindow.orderOut(sender)
             mapUnderEdit = self.deserializeMap(openDialog.URL!)
             mainGameViewController.prepareInterfaceForMapEditing(mapUnderEdit!)
+            mainMapWindow.setTitleWithRepresentedFilename(openDialog.URL!.path!)
         } else {
-            splashWindow.orderFront(sender)
             return
         }
         
@@ -94,7 +94,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             mainMapWindow.presentError(error!)
             return nil
         }
-        mainMapWindow.setTitleWithRepresentedFilename(mapPath.path!)
         return map
     }
     

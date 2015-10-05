@@ -19,6 +19,7 @@ class CCMapModel {
     var terrain : [[CCTerrainType]]?
     var width : Int = 0
     var height : Int = 0
+    var url : NSURL?
     
     var data : NSData {
         get {
