@@ -130,7 +130,7 @@ class CCMainGameViewController: NSViewController {
         v.setCurrentSelectedTool(currentToolSelected)
     }
     
-    func prepareInterfaceForMapEditing() -> CCMapModel {
+    func prepareInterfaceForMapEditing(map: CCMapModel) {
         toolsPanel.orderFrontRegardless()
         terraformingPanel.orderFrontRegardless()
         mainWindow.makeKeyAndOrderFront(nil)
@@ -143,15 +143,12 @@ class CCMainGameViewController: NSViewController {
         preparingMapModalViewProgressBar.startAnimation(self)
         
         isEditingMap = true
-        mapUnderEdit = CCMapModel()
-        mapUnderEdit!.createEmptyModel(100, height: 100, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
+        mapUnderEdit = map
         let mapview = view as! CCMainGameView
         mapview.initializeBackgroundRenderingLayer(mapUnderEdit!)
         minimapViewController.showMinimap(mapUnderEdit!)
         
         preparingMapModalViewProgressBar.stopAnimation(self)
         self.dismissViewController(preparingMapModalViewController)
-        
-        return mapUnderEdit!
     }
 }

@@ -17,16 +17,17 @@ class CCMinimapGameView: NSView {
     var minimapSize : CGSize?
     
     func initializeMinimapView(map: CCMapModel) {
-        minimapSize = CGSize(width: map.width * miniTileSize,
-            height: map.height * miniTileSize)
-        self.frame = NSRect(origin: CGPoint(x: 0,y: 0), size: minimapSize!)
-        
-        let context = NSGraphicsContext.currentContext()!.CGContext
-        offscreenLayer = CGLayerCreateWithContext(context,
-            minimapSize!, nil)
-        layerContext = CGLayerGetContext(offscreenLayer)
-        self.wantsLayer = true
-        
+        if offscreenLayer == nil {
+            minimapSize = CGSize(width: map.width * miniTileSize,
+                height: map.height * miniTileSize)
+            self.frame = NSRect(origin: CGPoint(x: 0,y: 0), size: minimapSize!)
+            
+            let context = NSGraphicsContext.currentContext()!.CGContext
+            offscreenLayer = CGLayerCreateWithContext(context,
+                minimapSize!, nil)
+            layerContext = CGLayerGetContext(offscreenLayer)
+            self.wantsLayer = true
+        }
         updateCurrentMap(map)
     }
     

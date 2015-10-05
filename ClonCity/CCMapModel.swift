@@ -41,23 +41,29 @@ class CCMapModel {
     init(data: NSData, inout error: NSError?) {
         let s = String(data: data, encoding: NSUTF8StringEncoding)
         let a1 = s?.characters.split {$0 == "\n"}
-        width = Int( String( (a1![0].split {$0 == " "})[1] ))!
-        height = Int( String( (a1![1].split {$0 == " "})[1] ))!
+        if a1?.count != 3 {
+            let errorDetail = NSMutableDictionary()
+            errorDetail.setValue("Error al leer el mapa para editar.", forKey: NSLocalizedDescriptionKey)
+            error = NSError(domain: "ClonCity", code: 001, userInfo: errorDetail as [NSObject : AnyObject])
+            return
+        }
+        self.width = Int( String( (a1![0].split {$0 == " "})[1] ))!
+        self.height = Int( String( (a1![1].split {$0 == " "})[1] ))!
         let m = String( a1![2] )
         var ind = m.startIndex
-        terrain = Array(count:width,
-            repeatedValue:Array(count:height, repeatedValue:CCTerrainType.CCTERRAIN_WATER))
-        for var i=0; i<width; i++ {
-            for var j=0; j<height; j++ {
+        self.terrain = Array(count:self.width,
+            repeatedValue:Array(count:self.height, repeatedValue:CCTerrainType.CCTERRAIN_WATER))
+        for var i=0; i<self.width; i++ {
+            for var j=0; j<self.height; j++ {
                 switch m[ind]{
                 case "0":
-                    terrain![i][j] = CCTerrainType.CCTERRAIN_WATER
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_WATER
                     break;
                 case "1":
-                    terrain![i][j] = CCTerrainType.CCTERRAIN_DIRT
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_DIRT
                     break;
                 case "2":
-                    terrain![i][j] = CCTerrainType.CCTERRAIN_TREE
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_TREE
                     break;
                 default:
                     let errorDetail = NSMutableDictionary()

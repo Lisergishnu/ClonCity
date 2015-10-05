@@ -10,7 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     @IBOutlet weak var splashWindow: NSWindow!
     @IBOutlet weak var mainGameViewController: CCMainGameViewController!
     @IBOutlet weak var windowMenu: NSMenuItem!
@@ -19,27 +19,83 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var mainMapWindow: NSWindow!
     
     var mapUnderEdit : CCMapModel?
+    var gameRunning : Bool = false
+    
+    
     
     @IBAction func createNewMap(sender: AnyObject?) {
         splashWindow.orderOut(sender)
-    
-        mapUnderEdit = mainGameViewController.prepareInterfaceForMapEditing()
-        windowMenu.hidden = false
-        terraformWindowMenuItem.hidden = false
-        newMapMenuItem.hidden = true
+        mapUnderEdit = CCMapModel()
+        mapUnderEdit!.createEmptyModel(100, height: 100, defaultTerrain: CCMapModel.CCTerrainType.CCTERRAIN_WATER)
+        mainGameViewController.prepareInterfaceForMapEditing(mapUnderEdit!)
     }
     
-    func loadMapForEdit(mapPath : NSURL) {
+    @IBAction func loadEditableTerrain(sender: AnyObject?) {
+        // Check if theres currently a game or a map being edited
+        if (gameRunning) {
+            let gameNotSaved : NSAlert = NSAlert()
+            gameNotSaved.addButtonWithTitle("Guardar Juego")
+            gameNotSaved.addButtonWithTitle("No Guardar")
+            gameNotSaved.addButtonWithTitle("Cancelar")
+            gameNotSaved.messageText = "Juego no guardado"
+            gameNotSaved.informativeText = "Cargar un mapa hará perder el progreso actual del juego. ¿Desea guardar antes de continuar?"
+            gameNotSaved.alertStyle = NSAlertStyle.WarningAlertStyle
+            
+            let r  = gameNotSaved.runModal()
+            
+            if r == NSAlertFirstButtonReturn {
+                // Save game
+            } else if r == NSAlertSecondButtonReturn {
+                // Continue without saving
+            } else {
+                // Do nothing
+                return
+            }
+        } else if (mapUnderEdit != nil) {
+            let gameNotSaved : NSAlert = NSAlert()
+            gameNotSaved.addButtonWithTitle("Guardar Mapa")
+            gameNotSaved.addButtonWithTitle("No Guardar")
+            gameNotSaved.addButtonWithTitle("Cancelar")
+            gameNotSaved.messageText = "Mapa no guardado"
+            gameNotSaved.informativeText = "Cargar un mapa hará perder los cambios no guardados en el que está siendo editado actualmente. ¿Desea guardar antes de continuar?"
+            gameNotSaved.alertStyle = NSAlertStyle.WarningAlertStyle
+            let r = gameNotSaved.runModal()
+            if r == NSAlertFirstButtonReturn {
+                // Save map
+                self.saveMap(sender)
+            } else if r == NSAlertSecondButtonReturn {
+                // Continue without saving
+            } else {
+                // Do nothing
+                return
+            }
+        }
+        
+        let openDialog : NSOpenPanel = NSOpenPanel()
+        
+        openDialog.title = "Abrir mapa para editar"
+        let r = openDialog.runModal()
+        if r == NSFileHandlingPanelOKButton {
+            splashWindow.orderOut(sender)
+            mapUnderEdit = self.deserializeMap(openDialog.URL!)
+            mainGameViewController.prepareInterfaceForMapEditing(mapUnderEdit!)
+        } else {
+            splashWindow.orderFront(sender)
+            return
+        }
+        
+    }
+    
+    func deserializeMap(mapPath : NSURL) -> CCMapModel? {
         let checkLoad = NSData(contentsOfURL: mapPath)
         var error : NSError?
         let map = CCMapModel(data: checkLoad!, error: &error)
         if (error != nil) {
             mainMapWindow.presentError(error!)
-            return
+            return nil
         }
         mainMapWindow.setTitleWithRepresentedFilename(mapPath.path!)
-        
-        mapUnderEdit = map;
+        return map
     }
     
     @IBAction func saveMap(sender: AnyObject?) {
@@ -53,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     fpath = saveDialog.URL!
                     let data = self.mapUnderEdit!.data
                     data.writeToURL(fpath!, atomically: false)
-                    self.loadMapForEdit(fpath!)
+                    self.deserializeMap(fpath!)
                 }
             })
             
@@ -65,11 +121,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowMenu.hidden = true
         terraformWindowMenuItem.hidden = true
     }
-
+    
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
-
+    
+    
 }
 

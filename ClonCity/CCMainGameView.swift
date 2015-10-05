@@ -9,7 +9,7 @@
 import Cocoa
 
 class CCMainGameView: NSView {
-        
+    
     
     var currentMap : CCMapModel?
     var offscreenLayer : CGLayer?
@@ -41,19 +41,21 @@ class CCMainGameView: NSView {
     }
     
     func initializeBackgroundRenderingLayer(initialMap: CCMapModel) {
-        currentMap = initialMap
-        /* Define dynamic boundaries for total layer size */
-        mapWidth = currentMap!.width*tileSize
-        mapHeight = currentMap!.height*tileSize
-        mapviewBounds = NSRect(x: 0, y: 0,
-            width: mapWidth, height: mapHeight)
-        self.setFrameSize(fittingSize)
-        
-        let context = NSGraphicsContext.currentContext()!.CGContext
-        offscreenLayer = CGLayerCreateWithContext(context,
-            CGSize(width: mapWidth,height: mapHeight), nil)
-        layerContext = CGLayerGetContext(offscreenLayer)
-        self.wantsLayer = true
+        if offscreenLayer == nil {
+            currentMap = initialMap
+            /* Define dynamic boundaries for total layer size */
+            mapWidth = currentMap!.width*tileSize
+            mapHeight = currentMap!.height*tileSize
+            mapviewBounds = NSRect(x: 0, y: 0,
+                width: mapWidth, height: mapHeight)
+            self.setFrameSize(fittingSize)
+            
+            let context = NSGraphicsContext.currentContext()!.CGContext
+            offscreenLayer = CGLayerCreateWithContext(context,
+                CGSize(width: mapWidth,height: mapHeight), nil)
+            layerContext = CGLayerGetContext(offscreenLayer)
+            self.wantsLayer = true
+        }
         drawCurrentMap(initialMap)
     }
     
@@ -109,7 +111,7 @@ class CCMainGameView: NSView {
             
             CGContextDrawImage(layerContext, NSRect(x: x*tileSize,
                 y: y*tileSize, width: tileSize,height: tileSize), toDraw)
-        
+            
     }
     
     override func drawRect(dirtyRect: NSRect) {
