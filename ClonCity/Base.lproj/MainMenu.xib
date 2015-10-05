@@ -780,44 +780,14 @@ Gw
         </viewController>
         <window title="ClonCity" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="fkd-td-6O7" userLabel="Splash Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="265"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="8tt-CG-kRa">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="4g8-je-jsj">
-                        <rect key="frame" x="14" y="13" width="122" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Nuevo Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xfz-nv-WCc">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" id="rDh-0O-rfC">
-                        <rect key="frame" x="342" y="13" width="124" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Cargar Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCi-h3-mXS">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" id="gYL-Rx-y7p">
-                        <rect key="frame" x="184" y="13" width="113" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Crear Mapa" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jpm-om-thT">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="createNewMap:" target="Voe-Tx-rLC" id="41h-BN-JQA"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="w9b-q4-ykf">
-                        <rect key="frame" x="133" y="113" width="215" height="91"/>
+                        <rect key="frame" x="20" y="85" width="215" height="91"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="ClonCity" drawsBackground="YES" id="xg4-t0-ek1">
@@ -826,13 +796,52 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" id="4g8-je-jsj">
+                        <rect key="frame" x="243" y="196" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Nuevo Juego" bezelStyle="shadowlessSquare" image="NSApplicationIcon" imagePosition="left" alignment="center" scrollable="YES" lineBreakMode="clipping" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="Xfz-nv-WCc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="rDh-0O-rfC">
+                        <rect key="frame" x="243" y="135" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Cargar Juego" bezelStyle="shadowlessSquare" image="NSFolder" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCi-h3-mXS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="CkC-r1-wae">
+                        <rect key="frame" x="243" y="74" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Crear Mapa" bezelStyle="shadowlessSquare" image="NSMultipleDocuments" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UhY-H7-83X">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="createNewMap:" target="Voe-Tx-rLC" id="Oij-H5-WE9"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="SKr-gO-cAL">
+                        <rect key="frame" x="243" y="13" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Cargar Mapa" bezelStyle="shadowlessSquare" image="NSFolderSmart" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F9Q-Er-ZxW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="SH4-74-omK"/>
             </connections>
-            <point key="canvasLocation" x="-621" y="20"/>
+            <point key="canvasLocation" x="-745" y="162.5"/>
         </window>
         <viewController id="JhO-aS-t1W" userLabel="Minimap View Controller" customClass="CCMinimapViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
@@ -882,6 +891,10 @@ Gw
     </objects>
     <resources>
         <image name="Dirt" width="32" height="32"/>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSFolder" width="32" height="32"/>
+        <image name="NSFolderSmart" width="32" height="32"/>
+        <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="Trees" width="32" height="32"/>
         <image name="Water" width="32" height="32"/>
     </resources>
