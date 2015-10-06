@@ -32,6 +32,7 @@ class CCMainGameViewController: NSViewController {
     var isEditingMap : Bool = false
     var mapUnderEdit : CCMapModel?
     var currentToolSelected : CCMainGameViewController.CCMapManipulationTool?
+    var mapEdited : Bool = false
     
     @IBAction func selectDirtForTerrainEditing(sender: AnyObject?) {
         if (isEditingMap) {
@@ -113,6 +114,8 @@ class CCMainGameViewController: NSViewController {
             
             mapUnderEdit!.terrain![i][j] = t
             v.drawTerrainTileAtTileCoordinate(i, y: j, type: t)
+            mapEdited = true
+            mainWindow.documentEdited = true
             v.needsDisplay = true
             minimapViewController.updateMinimap(mapUnderEdit!)
         }

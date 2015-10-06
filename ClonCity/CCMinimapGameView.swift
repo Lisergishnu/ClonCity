@@ -22,7 +22,8 @@ class CCMinimapGameView: NSView {
                 height: map.height * miniTileSize)
             self.frame = NSRect(origin: CGPoint(x: 0,y: 0), size: minimapSize!)
             
-            let context = NSGraphicsContext.currentContext()!.CGContext
+            let space = CGColorSpaceCreateDeviceRGB()
+            let context = CGBitmapContextCreate(nil, Int(minimapSize!.width), Int(minimapSize!.height), 8, Int(minimapSize!.width) * (CGColorSpaceGetNumberOfComponents(space) + 1), space, CGImageAlphaInfo.PremultipliedLast.rawValue)
             offscreenLayer = CGLayerCreateWithContext(context,
                 minimapSize!, nil)
             layerContext = CGLayerGetContext(offscreenLayer)

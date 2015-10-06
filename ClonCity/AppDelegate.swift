@@ -21,6 +21,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mapUnderEdit : CCMapModel?
     var gameRunning : Bool = false
     
+    func getDefaultMapFolder() -> NSURL? {
+        let fm = NSFileManager.defaultManager()
+        let bundleID = NSBundle.mainBundle().bundleIdentifier
+        let appsupport = fm.URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
+        if appsupport.count > 0 {
+            let dirPath = appsupport[0].URLByAppendingPathComponent(bundleID!).URLByAppendingPathComponent("Terrain Maps")
+            
+            do {
+            try fm.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                NSLog("Couldn't initialize path at %s", dirPath)
+                return nil
+            }
+            return dirPath
+        } else  {
+            return nil
+        }
+    }
+    
+    func getDefaultSavegameFolder() -> NSURL? {
+        let fm = NSFileManager.defaultManager()
+        let bundleID = NSBundle.mainBundle().bundleIdentifier
+        let appsupport = fm.URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
+        if appsupport.count > 0 {
+            let dirPath = appsupport[0].URLByAppendingPathComponent(bundleID!).URLByAppendingPathComponent("Saved Games")
+            
+            do {
+                try fm.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                NSLog("Couldn't initialize path at %s", dirPath)
+                return nil
+            }
+            return dirPath
+        } else  {
+            return nil
+        }
+    }
     
     
     @IBAction func createNewMap(sender: AnyObject?) {
@@ -40,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             gameNotSaved.messageText = "Juego no guardado"
             gameNotSaved.informativeText = "Cargar un mapa hará perder el progreso actual del juego. ¿Desea guardar antes de continuar?"
             gameNotSaved.alertStyle = NSAlertStyle.WarningAlertStyle
-            
+
             let r  = gameNotSaved.runModal()
             
             if r == NSAlertFirstButtonReturn {
@@ -74,6 +111,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let openDialog : NSOpenPanel = NSOpenPanel()
         
         openDialog.title = "Abrir mapa para editar"
+        openDialog.allowedFileTypes = ["ccmap"]
+        openDialog.directoryURL = getDefaultMapFolder()
         let r = openDialog.runModal()
         if r == NSFileHandlingPanelOKButton {
             splashWindow.orderOut(sender)
@@ -103,12 +142,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             var fpath : NSURL?
             
             saveDialog.title = "Guardar mapa"
+            saveDialog.allowedFileTypes = ["ccmap"]
+            saveDialog.directoryURL = getDefaultMapFolder()
             saveDialog.beginSheetModalForWindow(mainMapWindow, completionHandler: {
                 if ($0 == NSFileHandlingPanelOKButton) {
                     fpath = saveDialog.URL!
                     let data = self.mapUnderEdit!.data
                     data.writeToURL(fpath!, atomically: false)
-                    self.deserializeMap(fpath!)
+                    self.mainMapWindow.setTitleWithRepresentedFilename(fpath!.path!)
+                    self.mainMapWindow.documentEdited = false
+                    self.mainGameViewController.mapEdited = false
                 }
             })
             

@@ -50,7 +50,8 @@ class CCMainGameView: NSView {
                 width: mapWidth, height: mapHeight)
             self.setFrameSize(fittingSize)
             
-            let context = NSGraphicsContext.currentContext()!.CGContext
+            let space = CGColorSpaceCreateDeviceRGB()
+            let context = CGBitmapContextCreate(nil, mapWidth, mapHeight, 8, mapWidth * (CGColorSpaceGetNumberOfComponents(space) + 1), space, CGImageAlphaInfo.PremultipliedLast.rawValue)
             offscreenLayer = CGLayerCreateWithContext(context,
                 CGSize(width: mapWidth,height: mapHeight), nil)
             layerContext = CGLayerGetContext(offscreenLayer)
@@ -102,8 +103,6 @@ class CCMainGameView: NSView {
             case .CCTERRAIN_TREE:
                 tileToDraw = treesImage
             case .CCTERRAIN_DIRT:
-                tileToDraw = dirtImage
-            default:
                 tileToDraw = dirtImage
             }
             
