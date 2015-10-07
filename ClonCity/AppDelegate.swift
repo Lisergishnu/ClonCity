@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let dirPath = appsupport[0].URLByAppendingPathComponent(bundleID!).URLByAppendingPathComponent("Terrain Maps")
             
             do {
-            try fm.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
+                try fm.createDirectoryAtURL(dirPath, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 NSLog("Couldn't initialize path at %s", dirPath)
                 return nil
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             gameNotSaved.messageText = "Juego no guardado"
             gameNotSaved.informativeText = "Cargar un mapa hará perder el progreso actual del juego. ¿Desea guardar antes de continuar?"
             gameNotSaved.alertStyle = NSAlertStyle.WarningAlertStyle
-
+            
             let r  = gameNotSaved.runModal()
             
             if r == NSAlertFirstButtonReturn {
@@ -88,7 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 // Do nothing
                 return
             }
-        } else if (mapUnderEdit != nil) {
+        } else if (mapUnderEdit != nil && mainMapWindow.documentEdited) {
             let gameNotSaved : NSAlert = NSAlert()
             gameNotSaved.addButtonWithTitle("Guardar Mapa")
             gameNotSaved.addButtonWithTitle("No Guardar")
@@ -99,15 +99,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let r = gameNotSaved.runModal()
             if r == NSAlertFirstButtonReturn {
                 // Save map
-                self.saveMap(sender)
+                self.save(sender)
+                openMapLoadDialog(sender)
             } else if r == NSAlertSecondButtonReturn {
                 // Continue without saving
+                openMapLoadDialog(sender)
             } else {
                 // Do nothing
                 return
             }
+        } else {
+            openMapLoadDialog(sender)
         }
-        
+    }
+    
+    func openMapLoadDialog(sender: AnyObject?) {
         let openDialog : NSOpenPanel = NSOpenPanel()
         
         openDialog.title = "Abrir mapa para editar"
@@ -119,6 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             mapUnderEdit = self.deserializeMap(openDialog.URL!)
             mainGameViewController.prepareInterfaceForMapEditing(mapUnderEdit!)
             mainMapWindow.setTitleWithRepresentedFilename(openDialog.URL!.path!)
+            mainMapWindow.representedURL = openDialog.URL!
         } else {
             return
         }
@@ -136,25 +143,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return map
     }
     
-    @IBAction func saveMap(sender: AnyObject?) {
+    @IBAction func save(sender: AnyObject?) {
         if (mapUnderEdit != nil) {
-            let saveDialog : NSSavePanel = NSSavePanel();
-            var fpath : NSURL?
-            
-            saveDialog.title = "Guardar mapa"
-            saveDialog.allowedFileTypes = ["ccmap"]
-            saveDialog.directoryURL = getDefaultMapFolder()
-            saveDialog.beginSheetModalForWindow(mainMapWindow, completionHandler: {
-                if ($0 == NSFileHandlingPanelOKButton) {
-                    fpath = saveDialog.URL!
-                    let data = self.mapUnderEdit!.data
-                    data.writeToURL(fpath!, atomically: false)
-                    self.mainMapWindow.setTitleWithRepresentedFilename(fpath!.path!)
-                    self.mainMapWindow.documentEdited = false
-                    self.mainGameViewController.mapEdited = false
+            let fpath = mainMapWindow.representedURL
+            if fpath != nil {
+                let data = self.mapUnderEdit!.data
+                if data.writeToURL(fpath!, atomically: false) {
+                    mainMapWindow.documentEdited = false
                 }
-            })
-            
+            } else {
+                saveMapDialog(sender)
+            }
+        }
+    }
+    
+    @IBAction func saveAs(sender: AnyObject?) {
+        if (mapUnderEdit != nil) {
+            saveMapDialog(sender)
+        }
+    }
+    
+    func saveMapDialog(sender: AnyObject?) {
+        let saveDialog : NSSavePanel = NSSavePanel();
+        var fpath : NSURL?
+        
+        saveDialog.title = "Guardar mapa"
+        saveDialog.allowedFileTypes = ["ccmap"]
+        saveDialog.directoryURL = getDefaultMapFolder()
+        let r = saveDialog.runModal()
+        if (r == NSFileHandlingPanelOKButton) {
+            fpath = saveDialog.URL!
+            let data = self.mapUnderEdit!.data
+            data.writeToURL(fpath!, atomically: false)
+            self.mainMapWindow.setTitleWithRepresentedFilename(fpath!.path!)
+            self.mainMapWindow.documentEdited = false
+            self.mainGameViewController.mapEdited = false
         }
     }
     

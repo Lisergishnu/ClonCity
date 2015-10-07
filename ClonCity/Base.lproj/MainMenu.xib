@@ -101,16 +101,12 @@
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Guardar Mapa…" keyEquivalent="s" id="pxx-59-PXV">
+                            <menuItem title="Guardar" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
-                                    <action selector="saveMap:" target="Voe-Tx-rLC" id="wrI-Kz-RVL"/>
+                                    <action selector="save:" target="Voe-Tx-rLC" id="abw-n1-nIh"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
-                                <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Guardar Como..." keyEquivalent="S" id="Bw7-FT-i3A"/>
                             <menuItem title="Revert to Saved" id="KaW-ft-85H">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
