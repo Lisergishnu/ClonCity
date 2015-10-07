@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="mainGameViewController" destination="w0v-1A-wVW" id="I0L-d4-PGz"/>
+                <outlet property="mainMapWindow" destination="QvC-M9-y7g" id="k2b-C2-S2v"/>
                 <outlet property="newMapMenuItem" destination="t4Z-72-zeI" id="XEw-Hy-hKB"/>
                 <outlet property="splashWindow" destination="fkd-td-6O7" id="8rY-rN-TzC"/>
                 <outlet property="terraformWindowMenuItem" destination="bIL-Im-9L5" id="GnS-36-6YV"/>
@@ -71,34 +72,28 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Archivo" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="Nuevo Juego" keyEquivalent="n" id="Was-JA-tGl">
+                            <menuItem title="Nuevo Juego..." keyEquivalent="n" id="Was-JA-tGl">
                                 <connections>
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="createMapMenuDidGetPressed:" target="Voe-Tx-rLC" id="pZc-zC-5yO"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                            <menuItem title="Cargar Juego..." keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
                                     <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open Recent" id="tXI-mr-wws">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">
-                                    <items>
-                                        <menuItem title="Clear Menu" id="vNY-rz-j42">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="Daa-9d-B3U"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                            <menuItem isSeparatorItem="YES" id="OFp-Fw-WSn"/>
+                            <menuItem title="Nuevo Mapa..." keyEquivalent="n" id="t4Z-72-zeI">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="createNewMap:" target="Voe-Tx-rLC" id="TFe-Wn-V8g"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Cargar Mapa..." keyEquivalent="o" id="IoD-IM-uXx">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="loadEditableTerrain:" target="Voe-Tx-rLC" id="LN9-tB-Jly"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
@@ -106,16 +101,12 @@
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
+                            <menuItem title="Guardar" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
+                                    <action selector="save:" target="Voe-Tx-rLC" id="abw-n1-nIh"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
-                                <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Guardar Como..." keyEquivalent="S" id="Bw7-FT-i3A"/>
                             <menuItem title="Revert to Saved" id="KaW-ft-85H">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -439,58 +430,67 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField identifier="PopLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SKe-G4-iJD">
-                        <rect key="frame" x="18" y="3" width="102" height="17"/>
+                        <rect key="frame" x="18" y="3" width="79" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  ########" id="IKJ-cs-OOi">
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pop:  -------" id="IKJ-cs-OOi">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField identifier="YearLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mah-C2-FPl">
-                        <rect key="frame" x="235" y="3" width="67" height="17"/>
+                        <rect key="frame" x="235" y="3" width="58" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ####" id="FBT-Xt-F5y">
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Año: ----" id="FBT-Xt-F5y">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField identifier="MoneyLabel" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hJ8-Sc-czA">
-                        <rect key="frame" x="408" y="3" width="111" height="17"/>
+                        <rect key="frame" x="431" y="3" width="93" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: ########" id="jmJ-hV-0hk">
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLP $: --------" id="jmJ-hV-0hk">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5t6-gb-yJg">
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="5t6-gb-yJg">
                         <rect key="frame" x="0.0" y="21" width="537" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="PnR-YP-L0a">
-                            <rect key="frame" x="1" y="1" width="520" height="472"/>
+                            <rect key="frame" x="1" y="1" width="535" height="487"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView wantsLayer="YES" id="dpQ-Pa-xhE" customClass="CCMainGameView" customModule="ClonCity" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="537" height="487"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </customView>
                             </subviews>
+                            <animations/>
                         </clipView>
+                        <animations/>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="E4V-OC-j5e">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <rect key="frame" x="1" y="473" width="520" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6s2-UR-DWT">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <rect key="frame" x="521" y="1" width="15" height="472"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                     </scrollView>
                 </subviews>
+                <animations/>
             </view>
             <contentBorderThickness minY="22"/>
-            <point key="canvasLocation" x="-620.5" y="-491.5"/>
+            <point key="canvasLocation" x="-620.5" y="-340.5"/>
         </window>
         <window title="Herramientas" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aQJ-Fg-nat" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
@@ -504,14 +504,22 @@
                     <button id="QNh-gH-NQg">
                         <rect key="frame" x="0.0" y="141" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Move" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fg8-yh-TSU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
+                        <connections>
+                            <action selector="deselectMapManipulationTool:" target="w0v-1A-wVW" id="1kO-Ig-BEK"/>
+                        </connections>
                     </button>
                     <button id="m2c-rZ-PaS">
                         <rect key="frame" x="0.0" y="94" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="R" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64p-b5-B0M">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -520,6 +528,7 @@
                     <button id="hRH-eN-x0Y">
                         <rect key="frame" x="47" y="94" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="C" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZA-3E-XSt">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -528,6 +537,7 @@
                     <button id="jTW-SC-m7N">
                         <rect key="frame" x="47" y="47" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Power Plant" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uaG-Ju-hpk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -536,6 +546,7 @@
                     <button id="fcI-nR-Lp2">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="PLine" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e5h-qB-3Fh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -544,6 +555,7 @@
                     <button id="tH8-2V-dCw">
                         <rect key="frame" x="47" y="0.0" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Road" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Niz-Kz-341">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -552,6 +564,7 @@
                     <button id="skl-iJ-2CM">
                         <rect key="frame" x="47" y="141" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="Bulldozer" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sW8-g4-KwK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -560,59 +573,66 @@
                     <button id="4DZ-9C-jXr">
                         <rect key="frame" x="0.0" y="47" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="square" title="I" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftg-C8-j21">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
                 </subviews>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-235.5" y="-651.5"/>
         </window>
         <window title="Terraformación" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="VbS-cM-Nhz" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1045" y="526" width="95" height="94"/>
+            <rect key="contentRect" x="1045" y="526" width="100" height="141"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="Y5D-2V-zQI">
-                <rect key="frame" x="-1" y="0.0" width="95" height="94"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="141"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button id="NvH-g2-uO1">
-                        <rect key="frame" x="0.0" y="47" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Agua" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSJ-3f-8e7">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <button id="2MW-pZ-Ctc">
-                        <rect key="frame" x="47" y="47" width="48" height="48"/>
+                        <rect key="frame" x="0.0" y="47" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Tierra" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHF-vW-Vte">
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Tierra" bezelStyle="shadowlessSquare" image="Dirt" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHF-vW-Vte">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                    </button>
-                    <button id="Uvj-3R-0lb">
-                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Pasto" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KAI-FG-mM2">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
+                        <connections>
+                            <action selector="selectDirtForTerrainEditing:" target="w0v-1A-wVW" id="eHo-c6-Kez"/>
+                        </connections>
                     </button>
                     <button id="hKq-fM-Ldj">
-                        <rect key="frame" x="47" y="0.0" width="48" height="48"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="Arboles" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVY-TT-Ltm">
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Árboles" bezelStyle="shadowlessSquare" image="Trees" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVY-TT-Ltm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="selectTreesForTerrainEditing:" target="w0v-1A-wVW" id="LKy-tJ-zn4"/>
+                        </connections>
+                    </button>
+                    <button id="NvH-g2-uO1">
+                        <rect key="frame" x="0.0" y="94" width="100" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Agua" bezelStyle="shadowlessSquare" image="Water" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSJ-3f-8e7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectWaterForTerrainEditing:" target="w0v-1A-wVW" id="iqi-gS-beM"/>
+                        </connections>
                     </button>
                 </subviews>
+                <animations/>
             </view>
-            <point key="canvasLocation" x="-10.5" y="-699"/>
+            <point key="canvasLocation" x="-8" y="-675.5"/>
         </window>
         <window title="Minimapa" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="n0O-Fh-9x6" userLabel="Minimap" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
@@ -620,14 +640,16 @@
             <rect key="contentRect" x="819" y="206" width="320" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="BPm-nR-VDh">
-                <rect key="frame" x="0.0" y="5" width="320" height="256"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="pBh-dZ-Yjf" customClass="CCMinimapGameView" customModule="ClonCity" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                     </customView>
                 </subviews>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-123" y="-365"/>
         </window>
@@ -638,6 +660,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="d1R-BX-0bY">
                     <rect key="frame" x="18" y="223" width="137" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre de la ciudad:" id="CA4-ST-g1l">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -647,6 +670,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bg2-td-g5D">
                     <rect key="frame" x="18" y="168" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nombre del alcalde:" id="f1S-Pr-KeM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -656,6 +680,7 @@
                 <textField verticalHuggingPriority="750" id="Q98-pi-YCa">
                     <rect key="frame" x="20" y="138" width="196" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bgX-SE-HGJ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -665,8 +690,9 @@
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="DaV-OG-kng">
                     <rect key="frame" x="20" y="20" width="155" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="61" height="18"/>
+                    <size key="cellSize" width="60" height="18"/>
                     <size key="intercellSpacing" width="4" height="2"/>
                     <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="lvX-e2-kUu">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -692,6 +718,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hqZ-Pw-Ajg">
                     <rect key="frame" x="18" y="113" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dificultad:" id="obz-Cc-MDg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -701,6 +728,7 @@
                 <button verticalHuggingPriority="750" id="Lxq-c9-o0l">
                     <rect key="frame" x="352" y="212" width="114" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <buttonCell key="cell" type="push" title="Crear Ciudad" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="wuk-XT-3af">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -709,6 +737,7 @@
                 <button verticalHuggingPriority="750" id="9nr-z3-9NG">
                     <rect key="frame" x="371" y="13" width="95" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <animations/>
                     <buttonCell key="cell" type="push" title="Cancelar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hDa-GD-BKu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -717,6 +746,7 @@
                 <textField verticalHuggingPriority="750" id="m00-04-Zat">
                     <rect key="frame" x="20" y="193" width="196" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7QU-Uo-KjC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -724,12 +754,15 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <animations/>
             <point key="canvasLocation" x="-11" y="25"/>
         </customView>
         <viewController id="w0v-1A-wVW" customClass="CCMainGameViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="mainWindow" destination="QvC-M9-y7g" id="YXi-ez-yeP"/>
-                <outlet property="minimap" destination="n0O-Fh-9x6" id="rhT-9K-FAY"/>
+                <outlet property="minimapViewController" destination="JhO-aS-t1W" id="0j7-Qw-ecY"/>
+                <outlet property="preparingMapModalViewController" destination="jTO-vT-t4t" id="LZT-Sf-0DW"/>
+                <outlet property="preparingMapModalViewProgressBar" destination="PVl-3a-2h7" id="k5y-Lv-UWa"/>
                 <outlet property="terraformingPanel" destination="VbS-cM-Nhz" id="DsC-oQ-6ax"/>
                 <outlet property="toolsPanel" destination="aQJ-Fg-nat" id="y9u-DF-8Fg"/>
                 <outlet property="view" destination="dpQ-Pa-xhE" id="uie-4h-KEG"/>
@@ -737,59 +770,125 @@
         </viewController>
         <window title="ClonCity" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="fkd-td-6O7" userLabel="Splash Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="265"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="8tt-CG-kRa">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" id="4g8-je-jsj">
-                        <rect key="frame" x="14" y="13" width="122" height="32"/>
+                        <rect key="frame" x="243" y="196" width="223" height="62"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Nuevo Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xfz-nv-WCc">
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Nuevo Juego" bezelStyle="shadowlessSquare" image="NSApplicationIcon" imagePosition="left" alignment="center" scrollable="YES" lineBreakMode="clipping" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="Xfz-nv-WCc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="rDh-0O-rfC">
-                        <rect key="frame" x="342" y="13" width="124" height="32"/>
+                    <button verticalHuggingPriority="750" id="CkC-r1-wae">
+                        <rect key="frame" x="243" y="74" width="223" height="62"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cargar Juego" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCi-h3-mXS">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" id="gYL-Rx-y7p">
-                        <rect key="frame" x="184" y="13" width="113" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Crear Mapa" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jpm-om-thT">
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Crear Mapa" bezelStyle="shadowlessSquare" image="NSMultipleDocuments" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UhY-H7-83X">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="createMapButtonDidGetPressed:" target="Voe-Tx-rLC" id="Paf-3f-UWu"/>
+                            <action selector="createNewMap:" target="Voe-Tx-rLC" id="Oij-H5-WE9"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="SKr-gO-cAL">
+                        <rect key="frame" x="243" y="13" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Cargar Mapa" bezelStyle="shadowlessSquare" image="NSFolderSmart" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F9Q-Er-ZxW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="loadEditableTerrain:" target="Voe-Tx-rLC" id="U9z-4G-Gax"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="w9b-q4-ykf">
-                        <rect key="frame" x="133" y="113" width="215" height="91"/>
+                        <rect key="frame" x="20" y="87" width="215" height="91"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="ClonCity" drawsBackground="YES" id="xg4-t0-ek1">
                             <font key="font" size="50" name="Impact"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" id="rDh-0O-rfC">
+                        <rect key="frame" x="243" y="135" width="223" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="square" title="Cargar Juego" bezelStyle="shadowlessSquare" image="NSFolder" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCi-h3-mXS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="SH4-74-omK"/>
             </connections>
-            <point key="canvasLocation" x="-621" y="20"/>
+            <point key="canvasLocation" x="-676" y="-323.5"/>
         </window>
+        <viewController id="JhO-aS-t1W" userLabel="Minimap View Controller" customClass="CCMinimapViewController" customModule="ClonCity" customModuleProvider="target">
+            <connections>
+                <outlet property="minimapPanel" destination="n0O-Fh-9x6" id="bNh-Gc-jOr"/>
+                <outlet property="view" destination="pBh-dZ-Yjf" id="sHm-ai-Cqu"/>
+            </connections>
+        </viewController>
+        <viewController id="jTO-vT-t4t" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="jgu-cc-UlN" id="OLR-3t-Xg0"/>
+            </connections>
+        </viewController>
+        <popover id="99p-XQ-IzM">
+            <connections>
+                <outlet property="contentViewController" destination="jTO-vT-t4t" id="4bh-vX-OXO"/>
+                <outlet property="delegate" destination="jgu-cc-UlN" id="uet-BM-47Q"/>
+            </connections>
+        </popover>
         <viewController id="oPk-eO-Lii" userLabel="Splash View Controller" customClass="CCSplashViewController" customModule="ClonCity" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="8tt-CG-kRa" id="BIt-qL-0xU"/>
             </connections>
         </viewController>
+        <customView id="jgu-cc-UlN" userLabel="Preparing Map">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uzw-Yd-P6g">
+                    <rect key="frame" x="18" y="44" width="126" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Preparando Mapa..." id="mPf-0z-jc6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator canDrawConcurrently="YES" maxValue="100" indeterminate="YES" style="bar" id="PVl-3a-2h7">
+                    <rect key="frame" x="20" y="11" width="440" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                </progressIndicator>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="-621" y="280.5"/>
+        </customView>
     </objects>
+    <resources>
+        <image name="Dirt" width="32" height="32"/>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSFolder" width="32" height="32"/>
+        <image name="NSFolderSmart" width="32" height="32"/>
+        <image name="NSMultipleDocuments" width="32" height="32"/>
+        <image name="Trees" width="32" height="32"/>
+        <image name="Water" width="32" height="32"/>
+    </resources>
 </document>

@@ -10,17 +10,72 @@ import Foundation
 
 class CCMapModel {
     
-    enum CCTerrainType {
-        case CCTERRAIN_WATER
-        case CCTERRAIN_DIRT
-        case CCTERRAIN_GRASS
-        case CCTERRAIN_TREE
+    enum CCTerrainType : Int {
+        case CCTERRAIN_WATER = 0
+        case CCTERRAIN_DIRT = 1
+        case CCTERRAIN_TREE = 2
     }
     
     var terrain : [[CCTerrainType]]?
     var width : Int = 0
     var height : Int = 0
+    var url : NSURL?
     
+    var data : NSData {
+        get {
+            var s : String = ""
+            s += "Width " + width.description + "\n"
+            s += "Height " + height.description + "\n"
+            for var i=0; i<width; i++ {
+                for var j=0; j<height; j++ {
+                    s += terrain![i][j].rawValue.description
+                }
+            }
+            return s.dataUsingEncoding(NSUTF8StringEncoding)!
+        }
+    }
+    
+    init(){
+        
+    }
+    
+    init(data: NSData, inout error: NSError?) {
+        let s = String(data: data, encoding: NSUTF8StringEncoding)
+        let a1 = s?.characters.split {$0 == "\n"}
+        if a1?.count != 3 {
+            let errorDetail = NSMutableDictionary()
+            errorDetail.setValue("Error al leer el mapa para editar.", forKey: NSLocalizedDescriptionKey)
+            error = NSError(domain: "ClonCity", code: 001, userInfo: errorDetail as [NSObject : AnyObject])
+            return
+        }
+        self.width = Int( String( (a1![0].split {$0 == " "})[1] ))!
+        self.height = Int( String( (a1![1].split {$0 == " "})[1] ))!
+        let m = String( a1![2] )
+        var ind = m.startIndex
+        self.terrain = Array(count:self.width,
+            repeatedValue:Array(count:self.height, repeatedValue:CCTerrainType.CCTERRAIN_WATER))
+        for var i=0; i<self.width; i++ {
+            for var j=0; j<self.height; j++ {
+                switch m[ind]{
+                case "0":
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_WATER
+                    break;
+                case "1":
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_DIRT
+                    break;
+                case "2":
+                    self.terrain![i][j] = CCTerrainType.CCTERRAIN_TREE
+                    break;
+                default:
+                    let errorDetail = NSMutableDictionary()
+                    errorDetail.setValue("Error al leer el mapa para editar.", forKey: NSLocalizedDescriptionKey)
+                    error = NSError(domain: "ClonCity", code: 001, userInfo: errorDetail as [NSObject : AnyObject])
+                    return
+                }
+                ind = ind.successor()
+            }
+        }
+    }
     
     func createEmptyModel(width: Int, height: Int, defaultTerrain:CCTerrainType) {
         terrain = Array(count:width,
