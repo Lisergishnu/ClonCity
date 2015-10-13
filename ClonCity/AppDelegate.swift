@@ -126,6 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             mainGameViewController.prepareInterfaceForMapEditing(mapUnderEdit!)
             mainMapWindow.setTitleWithRepresentedFilename(openDialog.URL!.path!)
             mainMapWindow.representedURL = openDialog.URL!
+            mainMapWindow.title += " - Map Editor"
         } else {
             return
         }
